@@ -3537,6 +3537,8 @@ body.is-menu-visible #menu .inner {
 	bottom: 0;
 	min-width: 100%;
 	min-height: 100%;
+	width: auto;
+	height: auto;
 	z-index: -1;
 	filter: brightness(0.4);
 
