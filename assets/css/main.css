@@ -3535,6 +3535,8 @@ body.is-menu-visible #menu .inner {
 	position: absolute;
 	right: 0;
 	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
 	z-index: -1;
 	filter: brightness(0.4);
 
@@ -4334,7 +4336,7 @@ a[href="#top"] {
 	margin-top: 50px;
 	padding: 15px;
 	position: fixed;
-	top: 82%;
+	top: 80%;
 	right: 40px;
 	display: none;
 	background-color: #7985b0;
