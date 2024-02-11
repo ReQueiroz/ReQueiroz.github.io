@@ -220,7 +220,7 @@ body,
 input,
 select,
 textarea {
-	color: #ffffff;
+	color: #2c3464;
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
 	font-size: 16.5pt;
 	font-weight: 300;
@@ -288,7 +288,7 @@ a {
 	-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 	transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 	border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
-	color: #ffffff;
+	color: #2c3464;
 	text-decoration: none;
 }
 
@@ -342,11 +342,11 @@ a.special:not(.button):before {
 }
 
 a.special:not(.button):hover:before {
-	background-color: rgba(255, 255, 255, 0.025);
+	background-color: rgba(255, 0, 0, 0.025)025);
 }
 
 a.special:not(.button):active:before {
-	background-color: rgba(255, 255, 255, 0.075);
+	background-color: rgba(255, 124, 124, 0.075);
 }
 
 strong,
@@ -2228,8 +2228,7 @@ hr.major {
 }
 
 .special:hover {
-	background-color: rgb(46, 49, 65, 255);
-	color: white;
+	background-color: #2c3464
 }
 
 /* Section/Article */
@@ -2574,7 +2573,7 @@ input[type="radio"]+label:before {
 
 .image.left,
 .image.right {
-	max-width: 40%;
+	max-width: 400%;
 }
 
 .image.left img,
@@ -3157,14 +3156,18 @@ button:disabled,
 
 .features article {
 	padding: 1.75em 1.75em 0.1em 1.75em;
-	background-color: #353849;
+	background-color: #ffffff;
+	color: #000000;
 	border-radius: 5px;
 	margin: 1.5em 3em 1.5em 0;
 	width: calc(50% - 1.5em);
+	overflow: hidden;
 }
+
 
 .features article:nth-child(2n) {
 	margin-right: 0;
+	color: #000000;
 }
 
 .features article .image {
@@ -3175,10 +3178,12 @@ button:disabled,
 	margin-top: -1.75em;
 	position: relative;
 	width: calc(100% + 3.5em);
+
 }
 
+
 .features article .image img {
-	border-radius: 5px 5px 0 0;
+	border-radius: 15px 15px 15 15;
 	width: 100%;
 }
 
@@ -3223,13 +3228,18 @@ button:disabled,
 
 /* Header */
 
+#header img {
+	align-self: auto;
+	width: 60%;
+	margin-top: 15px;
+}
 
 #header {
 	-moz-transition: background-color 0.2s ease-in-out;
 	-webkit-transition: background-color 0.2s ease-in-out;
 	-ms-transition: background-color 0.2s ease-in-out;
 	transition: background-color 0.2s ease-in-out;
-	background-color: rgba(53, 56, 73, 0.95);
+	background-color: rgba(255, 255, 255, 0.95);
 	height: 3.5em;
 	left: 0;
 	line-height: 3.5em;
@@ -3250,6 +3260,7 @@ button:disabled,
 	margin-bottom: 0;
 	opacity: 1;
 	visibility: visible;
+	color: #000000
 }
 
 #header h1 a {
@@ -3278,6 +3289,7 @@ button:disabled,
 #header nav a:before {
 	float: right;
 	margin-left: 0.75em;
+
 }
 
 #header nav a[href="#menu"] {
@@ -3286,9 +3298,11 @@ button:disabled,
 	-webkit-transition: background-color 0.2s ease-in-out;
 	-ms-transition: background-color 0.2s ease-in-out;
 	transition: background-color 0.2s ease-in-out;
-	border-radius: 5px;
+	border-radius: 12px;
 	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.125);
 	padding: 0 1.35em;
+	color: #000000;
+	background-color: #ffffff;
 }
 
 #header nav a[href="#menu"]:before {
@@ -3302,6 +3316,7 @@ button:disabled,
 	text-transform: none !important;
 	font-family: 'Font Awesome 5 Free';
 	font-weight: 900;
+
 }
 
 #header nav a[href="#menu"]:before {
@@ -3310,20 +3325,24 @@ button:disabled,
 }
 
 #header nav a[href="#menu"]:hover {
-	background-color: rgba(255, 255, 255, 0.025);
+	background-color: #2c3464;
+	color: #000000;
 }
 
 #header nav a[href="#menu"]:active {
-	background-color: rgba(255, 255, 255, 0.075);
+	background-color: #ffffff;
+	color: #000000;
 }
 
 #header.alt {
 	background-color: transparent;
+
 }
 
 #header.alt h1 {
 	opacity: 0;
 	visibility: hidden;
+
 }
 
 @media screen and (max-width: 736px) {
@@ -3390,18 +3409,18 @@ button:disabled,
 }
 
 #menu {
-	-moz-align-items: center;
-	-webkit-align-items: center;
-	-ms-align-items: center;
-	align-items: center;
+	-moz-align-items: right;
+	-webkit-align-items: right;
+	-ms-align-items: right;
+	align-items: top;
 	display: -moz-flex;
 	display: -webkit-flex;
 	display: -ms-flex;
 	display: flex;
-	-moz-justify-content: center;
-	-webkit-justify-content: center;
-	-ms-justify-content: center;
-	justify-content: center;
+	-moz-justify-content: right;
+	-webkit-justify-content: right;
+	-ms-justify-content: right;
+	justify-content: right;
 	pointer-events: none;
 	-moz-transition: opacity 0.35s ease, visibility 0.35s;
 	-webkit-transition: opacity 0.35s ease, visibility 0.35s;
@@ -3412,12 +3431,13 @@ button:disabled,
 	-ms-user-select: none;
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	background: rgba(46, 49, 65, 0.8);
+	background-color: rgba(0, 0, 0, 0.3);
 	cursor: default;
 	height: 100%;
 	left: 0;
 	opacity: 0;
 	position: fixed;
+	align-self: right;
 	text-align: center;
 	top: 0;
 	visibility: hidden;
@@ -3435,22 +3455,26 @@ button:disabled,
 	-ms-transition: opacity 0.35s ease, -ms-transform 0.35s ease;
 	transition: opacity 0.35s ease, transform 0.35s ease;
 	-webkit-overflow-scrolling: touch;
-	background: #4c5c96;
+	background-color: #ffffff;
 	border-radius: 5px;
 	display: block;
 	max-width: 100%;
 	opacity: 0;
 	position: relative;
 	width: 18em;
+	color: #ffffff;
+
 }
 
 #menu h2 {
-	border-bottom: solid 2px rgba(255, 255, 255, 0.125);
+	border-bottom: solid 2px #2c3464;
 	padding-bottom: 1em;
+	color: #2c3464;
+
 }
 
 #menu .close {
-	background-image: url("images/close.svg");
+	background-image: url("images/close2.svg");
 	background-position: 75% 25%;
 	background-repeat: no-repeat;
 	background-size: 2em 2em;
@@ -3465,16 +3489,20 @@ button:disabled,
 	text-indent: 4em;
 	top: 0;
 	width: 4em;
+	color: #000000;
 }
 
 #menu .links {
 	list-style: none;
 	margin-bottom: 1.5em;
 	padding: 0;
+	color: #000000;
 }
 
 #menu .links li {
 	padding: 0;
+	color: #000000;
+
 }
 
 #menu .links li a {
@@ -3483,16 +3511,18 @@ button:disabled,
 	display: block;
 	font-family: Raleway, Helvetica, sans-serif;
 	font-size: 0.8em;
-	font-weight: 200;
+	font-weight: bold;
 	letter-spacing: 0.1em;
 	line-height: 1.85em;
-	padding: 0.75em 0;
+	padding: 0.7em 0;
 	text-transform: uppercase;
+	color: #2c3464;
 }
 
 #menu .links li a:hover {
-	background: #45558d;
+	background: #2c3464;
 }
+
 
 @media screen and (max-width: 736px) {
 
@@ -3545,7 +3575,7 @@ body.is-menu-visible #menu .inner {
 }
 
 #banner {
-	padding: 15em 0 9em 0;
+	padding: 15em 0 15em 0;
 }
 
 #banner .inner {
@@ -3796,8 +3826,8 @@ body.is-preload #banner p {
 }
 
 .wrapper {
-	background-color: #2e3141;
-	margin: 6.5em 0em;
+	background-color: #92b0d6;
+	margin: 0em 0em;
 	position: relative;
 }
 
@@ -3812,31 +3842,6 @@ body.is-preload #banner p {
 
 .wrapper:after {
 	box-shadow: inset 0 -1px 0 0 #2e3141, 0 1px 0 0 #2e3141;
-}
-
-.wrapper:before,
-.wrapper:after {
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	content: '';
-	display: block;
-	height: 6.5em;
-	position: absolute;
-	width: 100%;
-}
-
-.wrapper:before {
-	left: 0;
-	top: -6.5em;
-}
-
-.wrapper:after {
-	-moz-transform: scaleY(-1);
-	-webkit-transform: scaleY(-1);
-	-ms-transform: scaleY(-1);
-	transform: scaleY(-1);
-	bottom: -6.5em;
-	left: 0;
 }
 
 .wrapper.alt:before {
@@ -3861,10 +3866,12 @@ body.is-preload #banner p {
 
 .wrapper.style2 {
 	background-color: #35493a;
+
 }
 
 .wrapper.style2:before,
 .wrapper.style2:after {
+	margin: 6.5em 0em;
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%23353849%3B' /%3E%3C/svg%3E");
 }
 
@@ -3945,7 +3952,7 @@ body.is-preload #banner p {
 }
 
 .wrapper.spotlight {
-	background-color: #4c5c96;
+	background-color: #ffffff;
 }
 
 .wrapper.spotlight:before,
@@ -3977,7 +3984,7 @@ body.is-preload #banner p {
 }
 
 .wrapper.spotlight .image {
-	border-radius: 100%;
+	border-radius: 10%;
 	margin: 0 3em 2em 0;
 	width: 30em;
 	overflow: hidden;
@@ -3985,7 +3992,7 @@ body.is-preload #banner p {
 }
 
 .wrapper.spotlight .image img {
-	border-radius: 150%;
+	border-radius: 10%;
 	width: 100%;
 }
 
@@ -4007,7 +4014,7 @@ body.is-preload #banner p {
 }
 
 .wrapper.spotlight.style2 {
-	background-color: #45558d;
+	background-color: #d2e2f1;
 }
 
 .wrapper.spotlight.style2:before,
@@ -4024,7 +4031,7 @@ body.is-preload #banner p {
 }
 
 .wrapper.spotlight.style3 {
-	background-color: #3f4e85;
+	background-color: #9cbce4;
 }
 
 .wrapper.spotlight.style3:before,
@@ -4348,12 +4355,11 @@ a[href="#top"] {
 	top: 80%;
 	right: 40px;
 	display: none;
-	background-color: #7985b0;
+	background-color: #ffffff;
 	transition: ease-in-out .2s;
 	border-radius: 20%;
 }
 
 a[href="#top"]:hover {
-	opacity: .8;
 	background-color: #ffffff;
 }
