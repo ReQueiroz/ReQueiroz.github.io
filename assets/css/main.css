@@ -3015,10 +3015,10 @@ button,
 	-ms-transition: background-color 0.2s ease-in-out;
 	transition: background-color 0.2s ease-in-out;
 	background-color: transparent;
-	border-radius: 5px;
+	border-radius: 12px;
 	border: 0;
 	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.125);
-	color: #ffffff !important;
+	color: white !important;
 	cursor: pointer;
 	display: inline-block;
 	font-family: Raleway, Helvetica, sans-serif;
@@ -3027,7 +3027,36 @@ button,
 	height: 3.75em;
 	letter-spacing: 0.1em;
 	line-height: 3.75em;
-	padding: 0 2.25em;
+	padding: 0 5em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.button-home {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-webkit-transition: background-color 0.2s ease-in-out;
+	-ms-transition: background-color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
+	background-color: white;
+	border-radius: 12px;
+	border: 0;
+	box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.125);
+	color: #2c3464 !important;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 0.8em;
+	font-weight: 700;
+	height: 3.75em;
+	letter-spacing: 0.1em;
+	line-height: 3.75em;
+	padding: 0 5em;
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -3039,10 +3068,14 @@ input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover,
 .button:hover {
-	background-color: rgba(255, 255, 255, 0.025);
+	background-color: rgba(255, 255, 255, 0.08);
 }
 
-4c5c96 input[type="submit"]:active,
+.button-home:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+input[type="submit"]:active,
 input[type="reset"]:active,
 input[type="button"]:active,
 button:active,
@@ -3233,6 +3266,7 @@ button:disabled,
 	align-self: auto;
 	width: 60%;
 	margin-top: 15px;
+
 }
 
 #header {
@@ -3571,6 +3605,7 @@ body.is-menu-visible #menu .inner {
 
 /* Banner */
 
+
 #banner video {
 	position: absolute;
 	right: 0;
@@ -3581,11 +3616,10 @@ body.is-menu-visible #menu .inner {
 	height: auto;
 	z-index: -1;
 	filter: brightness(0.4);
-
 }
 
 #banner {
-	padding: 15em 0 15em 0;
+	padding: 13em 0 15em 0;
 }
 
 #banner .inner {
@@ -3638,7 +3672,9 @@ body.is-menu-visible #menu .inner {
 	opacity: 1;
 	border-bottom: solid 2px rgba(255, 255, 255, 0.125);
 	font-size: 3.00em;
+
 }
+
 
 #banner p {
 	-moz-transition: opacity 0.5s ease, -moz-transform 0.5s ease, -moz-filter 0.25s ease;
@@ -3746,6 +3782,212 @@ body.is-preload #banner h2 {
 }
 
 body.is-preload #banner p {
+	opacity: 0;
+	-moz-transform: translateX(0.5em);
+	-webkit-transform: translateX(0.5em);
+	-ms-transform: translateX(0.5em);
+	transform: translateX(0.5em);
+	-moz-filter: blur(2px);
+	-webkit-filter: blur(2px);
+	-ms-filter: blur(2px);
+	filter: blur(2px);
+}
+
+/* Banner Home*/
+
+
+#banner-home video {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -1;
+	filter: brightness(0.4);
+
+
+}
+
+#banner-home {
+	padding: 10em 0 16em 0;
+	background: linear-gradient(to bottom right, transparent 70%, white);
+}
+
+#banner-home .inner {
+	margin: 0 auto;
+	width: 75em;
+
+}
+
+#banner-home .logo {
+	-moz-transition: opacity 2s ease, -moz-transform 1s ease;
+	-webkit-transition: opacity 2s ease, -webkit-transform 1s ease;
+	-ms-transition: opacity 2s ease, -ms-transform 1s ease;
+	transition: opacity 2s ease, transform 1s ease;
+	-moz-transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
+	opacity: 1;
+	margin: 0 0 1.3em 0;
+}
+
+#banner-home .logo .icon {
+	border-radius: 100%;
+	border: solid 2px rgba(255, 255, 255, 0.125);
+	cursor: default;
+	display: inline-block;
+	font-size: 2em;
+	height: 2.25em;
+	line-height: 2.25em;
+	text-align: center;
+	width: 2.25em;
+}
+
+#banner-home h2 {
+	-moz-transition: opacity 0.5s ease, -moz-transform 0.5s ease, -moz-filter 0.25s ease;
+	-webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease, -webkit-filter 0.25s ease;
+	-ms-transition: opacity 0.5s ease, -ms-transform 0.5s ease, -ms-filter 0.25s ease;
+	transition: opacity 0.5s ease, transform 0.5s ease, filter 0.25s ease;
+	-moz-transform: translateX(0);
+	-webkit-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+	-moz-transition-delay: 0.65s;
+	-webkit-transition-delay: 0.65s;
+	-ms-transition-delay: 0.65s;
+	transition-delay: 0.65s;
+	-moz-filter: blur(0);
+	-webkit-filter: blur(0);
+	-ms-filter: blur(0);
+	filter: blur(0);
+	opacity: 1;
+	border-bottom: solid 2px rgba(255, 255, 255, 0.125);
+	font-size: 4.00em;
+	margin-bottom: 2%;
+
+}
+
+#banner-home .logo {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-bottom: 20px;
+	/* Ajuste conforme necessário para definir a distância entre a imagem e a borda inferior */
+	margin-right: 20px;
+	/* Ajuste conforme necessário para definir a distância entre a imagem e a borda direita */
+}
+
+#banner-home p {
+	-moz-transition: opacity 0.5s ease, -moz-transform 0.5s ease, -moz-filter 0.25s ease;
+	-webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease, -webkit-filter 0.25s ease;
+	-ms-transition: opacity 0.5s ease, -ms-transform 0.5s ease, -ms-filter 0.25s ease;
+	transition: opacity 0.5s ease, transform 0.5s ease, filter 0.25s ease;
+	-moz-transform: translateX(0);
+	-webkit-transform: translateX(0);
+	-ms-transform: translateX(0);
+	transform: translateX(0);
+	-moz-transition-delay: 0.8s;
+	-webkit-transition-delay: 0.8s;
+	-ms-transition-delay: 0.8s;
+	transition-delay: 0.8s;
+	-moz-filter: blur(0);
+	-webkit-filter: blur(0);
+	-ms-filter: blur(0);
+	filter: blur(0);
+	opacity: 1;
+	color: white;
+	font-family: Raleway, Helvetica, sans-serif;
+	font-size: 1.5em;
+	font-weight: 1000;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+
+}
+
+@media screen and (max-width: 1280px) {
+
+	#banner-home video {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -1;
+		filter: brightness(0.4);
+
+	}
+
+	#banner-home {
+		padding: 7em 0 8.25em 0;
+		margin-bottom: -6.5em;
+	}
+
+}
+
+@media screen and (max-width: 980px) {
+
+	#banner-home {
+		padding: 12em 3em 12.375em 3em;
+		margin-bottom: -4.75em;
+	}
+
+	#banner-home .inner {
+		width: 100%;
+	}
+
+}
+
+@media screen and (max-width: 736px) {
+
+	#banner-home {
+		padding: 5em 2em 4.25em 2em;
+		margin-bottom: -2.5em;
+	}
+
+	#banner-home .logo {
+		margin: 0 0 1em 0;
+	}
+
+	#banner-home .logo .icon {
+		font-size: 1.5em;
+	}
+
+	#banner-home h2 {
+		font-size: 1.5em;
+	}
+
+	#banner-home p {
+		font-size: 0.8em;
+	}
+
+}
+
+body.is-preload #banner-home .logo {
+	-moz-transform: translateY(0.5em);
+	-webkit-transform: translateY(0.5em);
+	-ms-transform: translateY(0.5em);
+	transform: translateY(0.5em);
+	opacity: 0;
+}
+
+body.is-preload #banner-home h2 {
+	opacity: 0;
+	-moz-transform: translateX(0.25em);
+	-webkit-transform: translateX(0.25em);
+	-ms-transform: translateX(0.25em);
+	transform: translateX(0.25em);
+	-moz-filter: blur(2px);
+	-webkit-filter: blur(2px);
+	-ms-filter: blur(2px);
+	filter: blur(2px);
+}
+
+body.is-preload #banner-home p {
 	opacity: 0;
 	-moz-transform: translateX(0.5em);
 	-webkit-transform: translateX(0.5em);
@@ -4233,16 +4475,19 @@ body.is-preload #banner p {
 }
 
 #footer .inner>* {
-	width: 100%;
+	width: 80%;
+	color: white
 }
 
 #footer .inner form {
 	margin: 0 3em 0 0;
 	width: calc(50% - 1.5em);
+
 }
 
 #footer .inner .contact {
 	width: calc(50% - 1.5em);
+
 }
 
 #footer .inner .copyright {
@@ -4251,6 +4496,7 @@ body.is-preload #banner p {
 	margin: 2em 0 2em 0;
 	padding: 1em 0 0 0;
 	width: 100%;
+
 }
 
 #footer .inner .copyright li {
@@ -4262,16 +4508,19 @@ body.is-preload #banner p {
 	margin-left: 1em;
 	padding: 0;
 	padding-left: 1em;
+
 }
 
 #footer .inner .copyright li:first-child {
 	border-left: 0;
 	margin-left: 0;
 	padding-left: 0;
+
 }
 
 #footer .inner .copyright li a {
 	color: inherit;
+
 }
 
 @media screen and (max-width: 1280px) {
