@@ -446,6 +446,14 @@ h6.major-inicio {
 	font-size: 2em;
 }
 
+h3.major-inicio {
+	padding-bottom: 0.5em;
+	border-bottom: solid 2px #2c3464;
+	color: #2c3464;
+	font-size: 1em;
+
+}
+
 h1.inicio-dep,
 h2.inicio-dep,
 h3.inicio-dep,
@@ -2289,6 +2297,10 @@ section.special,
 article.special {
 	text-align: center;
 
+}
+
+.features article p {
+	font-weight: bold;
 }
 
 /* Form */
