@@ -15,6 +15,14 @@
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+	<!-- Outros elementos do cabeçalho -->
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+</head>
+</head>
 </head>
 
 <body class="is-preload">
@@ -53,7 +61,7 @@
 		</nav>
 
 		<!-- Banner -->
-		<section id="banner">
+		<section id="banner" style="background-color: #4898e8;">
 			<div class="inner">
 				<h2>GESTÃO ESTRATÉGICA - GRU II</h2>
 				<p>Gestão à Vista da Logística que leva saúde até você.</p>
@@ -78,7 +86,7 @@
 						}
 
 						.image img:hover {
-							transform: scale(1.05);
+							transform: scale(0.98);
 						}
 					</style>
 					<a href="armazem.html" target="_blank" class="image"><img src="images/pic01.jpg"></a>
@@ -130,30 +138,63 @@
 				<div class="inner">
 					<h2 class="inicio-dep" align="center">GERENCIE OS DEPARTAMENTOS</h2>
 					<p class="inicio-dep" align="center">Gerencie os demais setores e departamentos da unidade por meio
-						de Dashboards e
-						KPIs decisivos
-						para a tomada de decições.</p>
+						de Dashboards e KPIs decisivos para a tomada de decições.</p>
 					<section class="features" align="center">
 						<article>
 							<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
 							<h3 class="major-inicio">EXPEDIÇÃO</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim
+								dapibus
 								ultrices.</p>
-							<a href="#" class="special">ACESSE O DASH</a>
+							<a href="#" class="special">ACESSE O TMS</a>
 						</article>
 						<article>
-							<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+							<a href="#" class="image"><img src="images/frota.png" alt="" /></a>
 							<h3 class="major-inicio">FROTA</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim
+								dapibus
 								ultrices.</p>
-							<a href="#" class="special">ACESSE O DASH</a>
+							<a href="#" class="special">ACESSAR</a>
 						</article>
 						<article>
 							<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
 							<h3 class="major-inicio">SORTER</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim
+								dapibus
 								ultrices.</p>
-							<a href="#" class="special">ACESSE O SITE</a>
+							<a href="#" class="special">ACESSE A BRINT</a>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="images/rh.png" alt="" /></a>
+							<h3 class="major-inicio">RH</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim
+								dapibus
+								ultrices.</p>
+							<a href="#" class="special">ACESSAR</a>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="images/ti.PNG" alt="" /></a>
+							<h3 class="major-inicio">TI</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim
+								dapibus
+								ultrices.</p>
+							<a href="#" class="special">ACESSE O PORTAL</a>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="images/insumos.PNG" alt="" /></a>
+							<h3 class="major-inicio">INSUMOS</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim
+								dapibus
+								ultrices.</p>
+							<a href="#" class="special">ACESSE O DASH</a>
+						</article>
+						<article>
+							<a href="#" class="image"><img src="images/sst.png" alt="" /></a>
+							<h3 class="major-inicio">SST</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim
+								dapibus
+								ultrices.</p>
+							<a href="#" class="special">ACESSAR</a>
 						</article>
 
 					</section>
@@ -185,6 +226,53 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<script>
+		// Espera o documento HTML estar completamente carregado
+		$(document).ready(function () {
+			// Seleciona todos os elementos com a classe "features" e aplica o plugin Slick Carousel
+			$('.features').slick({
+				// Ativa a exibição de indicadores de pontos na parte inferior do carrossel
+				dots: true,
+				// Permite o loop infinito do carrossel
+				infinite: true,
+				// Define a velocidade em milissegundos para a transição entre os slides
+				speed: 1000,
+				// Ativa a reprodução automática do carrossel
+				autoplay: true,
+				// Define o intervalo de tempo em milissegundos entre a transição automática dos slides
+				autoplaySpeed: 1500,
+				// Define quantos slides serão exibidos simultaneamente no carrossel
+				slidesToShow: 3.66,
+				// Define quantos slides são percorridos a cada vez que você avança ou retrocede no carrossel
+				slidesToScroll: 1,
+				// Personaliza os botões de navegação "Previous" (Anterior) e "Next" (Próximo)
+				prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				// Configurações responsivas para ajustar o comportamento do carrossel em diferentes larguras de tela
+				responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1,
+							infinite: true,
+							dots: true
+						}
+					},
+					{
+						breakpoint: 600,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+		});
+	</script>
+
 	<a href="#top">
 		<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 25 20" data-name="Layer 1">
 			<path
@@ -192,6 +280,14 @@
 		</svg>
 	</a>
 
+	<style>
+		/* Ajusta o tamanho do ícone dentro dos botões slick-prev e slick-next */
+		.slick-prev:before,
+		.slick-next:before {
+			font-size: 35px;
+			/* Define o tamanho do ícone */
+		}
+	</style>
 
 </body>
 
