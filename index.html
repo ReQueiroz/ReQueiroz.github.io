@@ -15,17 +15,7 @@
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-	<style>
-		.logo {
-			position: absolute;
-			bottom: 5vw;
-			/* 5% da largura da viewport */
-			right: 5vw;
-			/* 5% da largura da viewport */
-			z-index: 1000;
-			/* Para garantir que esteja sobreposta a outros elementos */
-		}
-	</style>
+
 </head>
 
 <body class="is-preload">
@@ -68,8 +58,96 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+
+	<a href="#top">
+		<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 25 20" data-name="Layer 1">
+			<path
+				d="M17.71,11.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,1.42,1.42L11,9.41V17a1,1,0,0,0,2,0V9.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,17.71,11.29Z" />
+		</svg>
+	</a>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p style="font-size: 1.5em;"><strong style="color: #2c3464;">ATENÇÃO</strong></p>
+			<p style="font-size: 1.2em; margin-top: -2em;">Usuário não cadastrado.</p>
+		</div>
+	</div>
+
+	<style>
+		/* Modal */
+		.modal {
+			display: none;
+			/* Esconde o modal por padrão */
+			position: fixed;
+			/* Permite que o modal seja fixado na tela */
+			z-index: 1000;
+			/* Coloca o modal na frente de outros elementos */
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			/* Adiciona scroll se necessário */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Fundo semi-transparente */
+		}
+
+		/* Conteúdo do modal */
+		.modal-content {
+			background-color: #fefefe;
+			border-radius: 10px;
+			margin: 20% auto;
+			/* Reduz a margem superior e inferior */
+			padding: 15px;
+			border: 1px solid #888;
+			width: 30%;
+			/* Largura do modal */
+			opacity: 0;
+			/* Inicialmente oculto */
+			animation: fadeIn 0.3s ease-in forwards;
+			/* Animação de fade-in */
+		}
+
+		/* Animação de fade-in */
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		/* Modal ativo */
+		.modal.active {
+			display: block;
+			/* Exibe o modal */
+		}
+
+		/* Botão de fechar */
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+
+
 	<script>
+		// Quando o documento estiver pronto
 		$(document).ready(function () {
+			// Ao clicar no botão de login
 			$('#login-button').click(function () {
 				var username = $('#demo-email').val();
 				var password = $('#demo-name').val();
@@ -79,21 +157,26 @@
 					// Redirecionar para homepage.html
 					window.location.href = 'homepage.html';
 				} else {
-					// Exibir mensagem de erro
-					alert('Usuário não cadastrado.');
+					// Mostrar o modal de usuário não cadastrado
+					$('#myModal').addClass('active');
+				}
+			});
+
+			// Ao clicar no botão de fechar do modal
+			$('.close').click(function () {
+				// Esconder o modal
+				$('#myModal').removeClass('active');
+			});
+
+			// Ao clicar fora do modal
+			$(window).click(function (e) {
+				if ($(e.target).hasClass('modal')) {
+					// Esconder o modal
+					$('#myModal').removeClass('active');
 				}
 			});
 		});
 	</script>
-
-	<a href="#top">
-		<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 25 20" data-name="Layer 1">
-			<path
-				d="M17.71,11.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,1.42,1.42L11,9.41V17a1,1,0,0,0,2,0V9.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,17.71,11.29Z" />
-		</svg>
-	</a>
-
-
 </body>
 
 </html>
