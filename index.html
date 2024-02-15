@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Solid State by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 
@@ -15,6 +15,17 @@
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<style>
+		.logo {
+			position: absolute;
+			bottom: 5vw;
+			/* 5% da largura da viewport */
+			right: 5vw;
+			/* 5% da largura da viewport */
+			z-index: 1000;
+			/* Para garantir que esteja sobreposta a outros elementos */
+		}
+	</style>
 </head>
 
 <body class="is-preload">
@@ -30,25 +41,25 @@
 			<h2>INTRANET - GRU II</h2>
 			<p>Gestão à Vista da Logística que leva saúde até você. </p>
 		</div>
-		<form method="post" action="#">
+		<form id="login-form" method="post" action="#">
 			<div class="row gtr-uniform">
 				<div class="col-6 col-12-xsmall" style="padding: 0 0 0 6.5em; width: 31.5%;">
 					<label for="demo-email">Usuário</label>
 					<input type="email" name="demo-email" id="demo-email" value="" />
 				</div>
 			</div>
-			<div class="col-6 col-12-xsmall" style="padding: 0 0 0 4.8em; width: 30%;">
-				<label for="demo-name">Senha</label>
-				<input type="password" name="demo-name" id="demo-name" value="" />
+			<div class="row gtr-uniform" style="margin-top: 1em;">
+				<div class="col-6 col-12-xsmall" style="padding: 0 0 0 6.5em; width: 31.5%;">
+					<label for="demo-name">Senha</label>
+					<input type="password" name="demo-name" id="demo-name" value="" />
+				</div>
 			</div>
 		</form>
 		<div class="inner">
-			<a href="homepage.html" class="button-home">Entrar</a>
+			<button id="login-button" class="button-home">Entrar</button>
 			<img src="images/logo.png" alt="Logo" class="logo">
 		</div>
 	</section>
-
-
 
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
@@ -57,6 +68,23 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#login-button').click(function () {
+				var username = $('#demo-email').val();
+				var password = $('#demo-name').val();
+
+				// Verificar se o usuário e senha estão preenchidos corretamente
+				if (username === 'admin' && password === 'admin') {
+					// Redirecionar para homepage.html
+					window.location.href = 'homepage.html';
+				} else {
+					// Exibir mensagem de erro
+					alert('Usuário não cadastrado.');
+				}
+			});
+		});
+	</script>
 
 	<a href="#top">
 		<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 25 20" data-name="Layer 1">
