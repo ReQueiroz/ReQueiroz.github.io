@@ -1,0 +1,744 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>@ CONTATOS - GRU 2</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+	<!-- Outros elementos do cabeçalho -->
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<div style="float: left;">
+				<h1><a href="homepage.html" class="image"><img src="images/logo.png"></a>
+			</div>
+			<div style="margin: 0 auto;">
+				<h1><a href="homepage.html">CONTATOS - GRU II</a></h1>
+			</div>
+			<nav>
+				<a href="#menu">Menu</a>
+			</nav>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="inner">
+
+				<h2>Menu</h2>
+				<ul class="links">
+					<li><a href="homepage.html">INÍCIO</a></li>
+					<li><a href="armazem.html">ARMAZÉM</a></li>
+					<li><a href="transportes.html">TRANSPORTES</a></li>
+					<li><a href="colaboradores.html">COLABORADORES</a></li>
+					<li><a href="departamentos.html">DEPARTAMENTOS</a></li>
+					<li><a href="unidades.html">UNIDADES</a></li>
+					<li><a href="clientes.html">CLIENTES</a></li>
+					<li><a href="renatoqueiroz.html">CRÉDITOS</a></li>
+				</ul>
+				<a href="#" class="close"></a>
+			</div>
+		</nav>
+
+		<!-- Banner -->
+		<section id="banner"
+			style="background-image: url('images/bg-colab.png'); background-size: cover; background-position: center;">
+			<div class="inner">
+				<h2 style="color:#2c3464">CONTATOS - GRU II</h2>
+				<p style="color:#2c3464">Gestão à Vista da Logística que leva saúde até você.</p>
+			</div>
+		</section>
+
+		<!-- Wrapper -->
+		<section id="wrapper">
+
+			<section id="four" class="wrapper alt style1" style="background-color: white;">
+				<div class="inner">
+					<section>
+						<a href="colaboradores.html" style="text-decoration: none;">
+							<button
+								style="background-color: #2c3464; color: white; margin-right: 13em; padding: 0 5em; border: none; cursor: pointer; float: left;">Voltar</button>
+						</a>
+
+						<h2 class="major" style="color: #2c3464;">LISTAGEM DE CONTATOS</h2>
+						<div style=" margin-bottom: 2em; display: inline-block; width: 70%;">
+
+							<label for="demo-name" style="color: #2c3464">Filtrar por Colaborador:</label>
+							<input type="text" name="demo-name" id="demo-name" value="Nome do colaborador"
+								onfocus="clearInput()" onblur="restoreInput()" onkeyup="filterTable()">
+						</div>
+						<div style="margin-bottom: 2em; display: inline-block; width: 29%;">
+							<label for="department-filter" style="color: #2c3464">Filtrar por Departamento:</label>
+							<select id="department-filter" onchange="filterByDepartment()" style="cursor: pointer;">
+								<option style="background-color: white; color: #2c3464; font-weight: bold;" value="">
+									Todos</option>
+								<option style="background-color: white; color: #2c3464; font-weight: bold;"
+									value="Operacional">
+									Operacional</option>
+								<option style="background-color: white; color: #2c3464; font-weight: bold;" value="TI">
+									TI</option>
+								<option style="background-color: white; color: #2c3464; font-weight: bold;"
+									value="Frota">Frota
+								</option>
+								<option style="background-color: white; color: #2c3464; font-weight: bold;"
+									value="Expedição">
+									Expedição</option>
+								<option style="background-color: white; color: #2c3464; font-weight: bold;"
+									value="Transportes">
+									Transportes</option>
+								<option style="background-color: white; color: #2c3464; font-weight: bold;" value="RH">
+									RH</option>
+								<option style="background-color: white; color: #2c3464; font-weight: bold;"
+									value="Aéreo">Aéreo
+								</option>
+							</select>
+						</div>
+
+
+
+						<div class="table-wrapper" style="color: white;">
+							<table id="default-table" style="background-color: white; text-align: center;">
+								<thead style="background-color: #2c3464; box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);">
+									<tr>
+										<th style="text-align: center; padding-top: 0.7em;">Matrícula</th>
+										<th style="text-align: center;">Nome Completo</th>
+										<th style="text-align: center;">Unidade</th>
+										<th style="text-align: center;">E-mail</th>
+										<th style="text-align: center;">Ramal</th>
+										<th style="text-align: center;">Departamento</th>
+									</tr>
+								</thead>
+								<tbody
+									style="font-weight: bold; color: #2c3464; background-color: white; box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);">
+									<tr>
+										<td>111025</td>
+										<td>Renato Silva de Queiroz</td>
+										<td>GRU 2</td>
+										<td>renato.queiroz@rvimola.com.br</td>
+										<td>1307</td>
+										<td>Operacional</td>
+									</tr>
+									<tr>
+										<td>115893</td>
+										<td>José da Silva Pereira</td>
+										<td>GRU 2</td>
+										<td>jose.silva@rvimola.com.br</td>
+										<td>1309</td>
+										<td>TI</td>
+									</tr>
+									<tr>
+										<td>118572</td>
+										<td>Maria Oliveira Santos</td>
+										<td>GRU 2</td>
+										<td>maria.oliveira@rvimola.com.br</td>
+										<td>1345</td>
+										<td>Frota</td>
+									</tr>
+									<tr>
+										<td>116741</td>
+										<td>João Santos Silva</td>
+										<td>GRU 2</td>
+										<td>joao.santos@rvimola.com.br</td>
+										<td>1321</td>
+										<td>Operacional</td>
+									</tr>
+									<tr>
+										<td>117269</td>
+										<td>Ana Costa Pereira</td>
+										<td>GRU 2</td>
+										<td>ana.costa@rvimola.com.br</td>
+										<td>1387</td>
+										<td>Expedição</td>
+									</tr>
+									<tr>
+										<td>116435</td>
+										<td>Carlos Pereira Almeida</td>
+										<td>GRU 2</td>
+										<td>carlos.pereira@rvimola.com.br</td>
+										<td>1341</td>
+										<td>Transportes</td>
+									</tr>
+									<tr>
+										<td>117992</td>
+										<td>Juliana Almeida Silva</td>
+										<td>GRU 2</td>
+										<td>juliana.almeida@rvimola.com.br</td>
+										<td>1393</td>
+										<td>Operacional</td>
+									</tr>
+									<tr>
+										<td>115687</td>
+										<td>Pedro Carvalho Oliveira</td>
+										<td>GRU 2</td>
+										<td>pedro.carvalho@rvimola.com.br</td>
+										<td>1376</td>
+										<td>TI</td>
+									</tr>
+									<tr>
+										<td>119272</td>
+										<td>Fernanda Machado Santos</td>
+										<td>GRU 2</td>
+										<td>fernanda.machado@rvimola.com.br</td>
+										<td>1349</td>
+										<td>RH</td>
+									</tr>
+									<tr>
+										<td>118134</td>
+										<td>Luiz Oliveira Almeida</td>
+										<td>GRU 2</td>
+										<td>luiz.oliveira@rvimola.com.br</td>
+										<td>1338</td>
+										<td>Aéreo</td>
+									</tr>
+									<tr>
+										<td>117683</td>
+										<td>André da Costa Silva</td>
+										<td>GRU 2</td>
+										<td>andre.costa@rvimola.com.br</td>
+										<td>1324</td>
+										<td>Expedição</td>
+									</tr>
+									<tr>
+										<td>118947</td>
+										<td>Gabriela Oliveira Almeida</td>
+										<td>GRU 2</td>
+										<td>gabriela.oliveira@rvimola.com.br</td>
+										<td>1375</td>
+										<td>Frota</td>
+									</tr>
+									<tr>
+										<td>118026</td>
+										<td>Ricardo Pereira Santos</td>
+										<td>GRU 2</td>
+										<td>ricardo.pereira@rvimola.com.br</td>
+										<td>1383</td>
+										<td>Operacional</td>
+									</tr>
+									<tr>
+										<td>116309</td>
+										<td>Camila Silva Oliveira</td>
+										<td>GRU 2</td>
+										<td>camila.silva@rvimola.com.br</td>
+										<td>1337</td>
+										<td>Transportes</td>
+									</tr>
+									<tr>
+										<td>119538</td>
+										<td>Marcos Oliveira Alves</td>
+										<td>GRU 2</td>
+										<td>marcos.alves@rvimola.com.br</td>
+										<td>1312</td>
+										<td>Operacional</td>
+									</tr>
+									<tr>
+										<td>115472</td>
+										<td>Ana Paula Pereira Oliveira</td>
+										<td>GRU 2</td>
+										<td>ana.paula@rvimola.com.br</td>
+										<td>1399</td>
+										<td>TI</td>
+									</tr>
+									<tr>
+										<td>117825</td>
+										<td>Leandro Almeida Costa</td>
+										<td>GRU 2</td>
+										<td>leandro.costa@rvimola.com.br</td>
+										<td>1355</td>
+										<td>RH</td>
+									</tr>
+									<tr>
+										<td>119456</td>
+										<td>Sandra Oliveira Santos</td>
+										<td>GRU 2</td>
+										<td>sandra.santos@rvimola.com.br</td>
+										<td>1325</td>
+										<td>Aéreo</td>
+									</tr>
+									<tr>
+										<td>118792</td>
+										<td>Rafael Silva Pereira</td>
+										<td>GRU 2</td>
+										<td>rafael.silva@rvimola.com.br</td>
+										<td>1371</td>
+										<td>Expedição</td>
+									</tr>
+									<tr>
+										<td>118277</td>
+										<td>Larissa Alves Pereira</td>
+										<td>GRU 2</td>
+										<td>larissa.alves@rvimola.com.br</td>
+										<td>1359</td>
+										<td>Frota</td>
+									</tr>
+									<tr>
+										<td>115943</td>
+										<td>Rodrigo Oliveira Silva</td>
+										<td>GRU 2</td>
+										<td>rodrigo.oliveira@rvimola.com.br</td>
+										<td>1346</td>
+										<td>Operacional</td>
+									</tr>
+									<tr>
+										<td>116573</td>
+										<td>Leticia Pereira Almeida</td>
+										<td>GRU 2</td>
+										<td>leticia.pereira@rvimola.com.br</td>
+										<td>1382</td>
+										<td>Transportes</td>
+									</tr>
+									<tr>
+										<td>117825</td>
+										<td>Marcelo Almeida Oliveira</td>
+										<td>GRU 2</td>
+										<td>marcelo.almeida@rvimola.com.br</td>
+										<td>1369</td>
+										<td>Operacional</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+
+						<!-- Botão para abrir o modal -->
+						<button onclick="openModal()"
+							style="background-color: #2c3464; color: white; padding: 0 25%; border: none; cursor: pointer; float: center;">Adicionar
+							Colaborador</button>
+
+						<a href="colaboradores.html" style="text-decoration: none;">
+							<button
+								style="background-color: #2c3464; color: white; margin-right: 10em; padding: 0 5em; border: none; cursor: pointer; float: left;">Voltar</button>
+						</a>
+						<div class="inner">
+							<section>
+								<!-- Modal -->
+								<div id="myModal" class="modal">
+									<!-- Conteúdo do modal -->
+									<div class="modal-content">
+										<span class="close" onclick="closeModal()">&times;</span>
+										<h3 class="major" style="color: #2c3464">CADASTRO DE NOVO COLABORADOR</h3>
+										<div style="margin-bottom: 1em;">
+											<label for="new-name" style="color: #2c3464">Nome do Colaborador:</label>
+											<input type="text" id="new-name" placeholder="Nome completo">
+										</div>
+										<div style="margin-bottom: 1em;">
+											<label for="new-unit" style="color: #2c3464">Unidade:</label>
+											<input type="text" id="new-unit" placeholder="Unidade">
+										</div>
+										<div style="margin-bottom: 1em;">
+											<label for="new-email" style="color: #2c3464">E-mail:</label>
+											<input type="email" id="new-email" placeholder="E-mail">
+										</div>
+										<div style="margin-bottom: 1em;">
+											<label for="new-ramal" style="color: #2c3464">Ramal:</label>
+											<input type="text" id="new-ramal" placeholder="Ramal">
+										</div>
+										<div style="margin-bottom: 1em;">
+											<label for="new-department" style="color: #2c3464">Departamento:</label>
+											<select id="new-department">
+												<option value="Operacional">Operacional</option>
+												<option value="TI">TI</option>
+												<option value="Frota">Frota</option>
+												<option value="Expedição">Expedição</option>
+												<option value="Transportes">Transportes</option>
+												<option value="RH">RH</option>
+												<option value="Aéreo">Aéreo</option>
+											</select>
+										</div>
+										<div>
+											<button onclick="addNewUser()"
+												style="background-color: #2c3464; color: white; padding: 0.5em 1em; border: none; cursor: pointer;">Adicionar
+												Colaborador</button>
+										</div>
+									</div>
+								</div>
+
+							</section>
+						</div>
+
+
+					</section>
+				</div>
+			</section>
+
+
+
+			<!-- Footer -->
+			<section id="footer" align="center">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; RV Ímola Transportes e Logistica LTDA. Todos os direitos reservados.</li>
+						<a href="https://www.facebook.com/rvimola/" class="icon brands fa-facebook-f"
+							style="color: white;"></a>
+						<a href="https://www.instagram.com/rvimola/" class="icon brands fa-instagram"
+							style="padding-left: 1em; color: white;"></a>
+						<a href="https://www.linkedin.com/company/rvimola/" class="icon brands fa-linkedin"
+							style="padding-left: 1em; color: white;"></a>
+						</li>
+
+						<li>Desenvolvido por: <a href="renatoqueiroz.html">Renato S. Queiroz</a></li>
+						<a href="renatoqueiroz.html" class="icon brands fa-linkedin" style="color: white;"></a>
+						</a>
+						</li>
+						</li>
+					</ul>
+				</div>
+
+			</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<script>
+		// Espera o documento HTML estar completamente carregado
+		$(document).ready(function () {
+			// Seleciona todos os elementos com a classe "features" e aplica o plugin Slick Carousel
+			$('.features').slick({
+				// Ativa a exibição de indicadores de pontos na parte inferior do carrossel
+				dots: true,
+				// Permite o loop infinito do carrossel
+				infinite: true,
+				// Define a velocidade em milissegundos para a transição entre os slides
+				speed: 1500,
+				// Ativa a reprodução automática do carrossel
+				autoplay: true,
+				// Define o intervalo de tempo em milissegundos entre a transição automática dos slides
+				autoplaySpeed: 1000,
+				// Define quantos slides serão exibidos simultaneamente no carrossel
+				slidesToShow: 3.66,
+				// Define quantos slides são percorridos a cada vez que você avança ou retrocede no carrossel
+				slidesToScroll: 1,
+				// Personaliza os botões de navegação "Previous" (Anterior) e "Next" (Próximo)
+				prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				// Configurações responsivas para ajustar o comportamento do carrossel em diferentes larguras de tela
+				responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1,
+							infinite: true,
+							dots: true
+						}
+					},
+					{
+						breakpoint: 600,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+		});
+	</script>
+
+	<script>
+		function clearInput() {
+			document.getElementById('demo-name').value = '';
+		}
+
+		function restoreInput() {
+			if (document.getElementById('demo-name').value === '') {
+				document.getElementById('demo-name').value = 'Nome do colaborador';
+			}
+		}
+
+		function filterTable() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("demo-name"); // Corrigido aqui removendo o espaço extra
+			filter = input.value.toUpperCase();
+			table = document.getElementById("default-table");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1]; // Index 1 para o segundo <td> que contém o nome
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+
+		function filterByDepartment() {
+			var select, filter, table, tr, td, i;
+			select = document.getElementById("department-filter");
+			filter = select.value.toUpperCase();
+			table = document.getElementById("default-table");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[5]; // Index 5 para o sexto <td> que contém o departamento
+				if (td) {
+					if (filter === '' || td.textContent.toUpperCase() === filter) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
+
+	<script>
+		// Função para abrir o modal
+		function openModal() {
+			var modal = document.getElementById("myModal");
+			modal.style.display = "block";
+			modal.style.overflow = "hidden"; // Impede a rolagem dentro do modal
+			modal.querySelector(".modal-content").style.overflow = "hidden"; // Impede a rolagem dentro do conteúdo do modal
+		}
+
+		// Função para fechar o modal
+		function closeModal() {
+			var modal = document.getElementById("myModal");
+			modal.style.display = "none";
+			document.body.style.overflow = ""; // Permite a rolagem da página novamente
+			modal.style.overflow = ""; // Permite a rolagem dentro do modal novamente
+			modal.querySelector(".modal-content").style.overflow = ""; // Permite a rolagem dentro do conteúdo do modal novamente
+		}
+
+		function addNewUser() {
+			var name = document.getElementById("new-name").value.trim();
+			var unit = document.getElementById("new-unit").value.trim();
+			var email = document.getElementById("new-email").value.trim();
+			var ramal = document.getElementById("new-ramal").value.trim();
+			var department = document.getElementById("new-department").value;
+
+			if (name === "" || unit === "" || email === "" || ramal === "") {
+				alert("Por favor, preencha todos os campos.");
+				return;
+			}
+
+			var newRow = document.createElement("tr");
+			newRow.innerHTML = `
+			<td>${generateMatricula()}</td>
+			<td>${name}</td>
+			<td>${unit}</td>
+			<td>${email}</td>
+			<td>${ramal}</td>
+			<td>${department}</td>
+		`;
+
+			document.getElementById("default-table").getElementsByTagName("tbody")[0].appendChild(newRow);
+
+			// Limpa os campos do formulário após adicionar o novo colaborador
+			document.getElementById("new-name").value = "";
+			document.getElementById("new-unit").value = "";
+			document.getElementById("new-email").value = "";
+			document.getElementById("new-ramal").value = "";
+
+			// Fecha o modal após adicionar o colaborador
+			closeModal();
+
+			alert("Colaborador adicionado com sucesso!");
+		}
+
+		// Função para gerar uma matrícula aleatória de 6 dígitos
+		function generateMatricula() {
+			var min = 100000;
+			var max = 999999;
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+	</script>
+
+	<script>
+		function toggleCadastro() {
+			var cadastroSection = document.getElementById("cadastro-section");
+			if (cadastroSection.style.display === "none") {
+				cadastroSection.style.display = "block";
+			} else {
+				cadastroSection.style.display = "none";
+			}
+		}
+
+		function addNewUser() {
+			var name = document.getElementById("new-name").value.trim();
+			var unit = document.getElementById("new-unit").value.trim();
+			var email = document.getElementById("new-email").value.trim();
+			var ramal = document.getElementById("new-ramal").value.trim();
+			var department = document.getElementById("new-department").value;
+
+			if (name === "" || unit === "" || email === "" || ramal === "") {
+				alert("Por favor, preencha todos os campos.");
+				return;
+			}
+
+			var newRow = document.createElement("tr");
+			newRow.innerHTML = `
+<td>${generateMatricula()}</td>
+<td>${name}</td>
+<td>${unit}</td>
+<td>${email}</td>
+<td>${ramal}</td>
+<td>${department}</td>
+`;
+
+			document.getElementById("default-table").getElementsByTagName("tbody")[0].appendChild(newRow);
+
+			// Limpa os campos do formulário após adicionar o novo colaborador
+			document.getElementById("new-name").value = "";
+			document.getElementById("new-unit").value = "";
+			document.getElementById("new-email").value = "";
+			document.getElementById("new-ramal").value = "";
+
+			alert("Colaborador adicionado com sucesso!");
+		}
+
+		// Função para gerar uma matrícula aleatória de 6 dígitos
+		function generateMatricula() {
+			var min = 100000;
+			var max = 999999;
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+	</script>
+
+	<script>
+		// Função para obter todos os elementos <tr> dentro do corpo da tabela
+		var rows = document.querySelectorAll("#default-table tbody tr");
+
+		// Array vazio para armazenar os elementos <tr> ordenados
+		var rowsArray = [];
+
+		// Loop para percorrer cada linha e armazenar os dados no array
+		rows.forEach(function (row) {
+			// Cria um objeto com os dados da linha
+			var rowData = {
+				nome: row.cells[1].innerText.toLowerCase(), // Obtém o nome completo e converte para minúsculas para ordenação não sensível a maiúsculas/minúsculas
+				rowElement: row // Armazena o elemento <tr>
+			};
+			// Adiciona o objeto ao array
+			rowsArray.push(rowData);
+		});
+
+		// Ordena o array com base no nome
+		rowsArray.sort(function (a, b) {
+			return a.nome.localeCompare(b.nome);
+		});
+
+		// Limpa o corpo da tabela
+		document.querySelector("#default-table tbody").innerHTML = "";
+
+		// Adiciona as linhas ordenadas de volta à tabela
+		rowsArray.forEach(function (row) {
+			document.querySelector("#default-table tbody").appendChild(row.rowElement);
+		});
+	</script>
+
+	<script>
+		function filterTable() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById(" demo-name"); filter = input.value.toUpperCase();
+			table = document.getElementById("default-table"); tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1]; // Index 1
+para o segundo < td > que contém o nome
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
+
+
+
+
+
+
+	<a href="#top">
+		<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 25 20" data-name="Layer 1">
+			<path
+				d="M17.71,11.29l-5-5a1,1,0,0,0-.33-.21,1,1,0,0,0-.76,0,1,1,0,0,0-.33.21l-5,5a1,1,0,0,0,1.42,1.42L11,9.41V17a1,1,0,0,0,2,0V9.41l3.29,3.3a1,1,0,0,0,1.42,0A1,1,0,0,0,17.71,11.29Z" />
+		</svg>
+	</a>
+
+	<style>
+		/* Ajusta o tamanho do ícone dentro dos botões slick-prev e slick-next */
+		.slick-prev:before,
+		.slick-next:before {
+			font-size: 35px;
+			/* Define o tamanho do ícone */
+		}
+	</style>
+
+	<style>
+		/* Estilos para o modal */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.modal-content {
+			background-color: #fefefe;
+			margin: 5% auto 0;
+			/* Ajuste da margem superior para 15% */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 100%;
+			max-width: 600px;
+			max-height: 1800px;
+			border-radius: 10px;
+		}
+
+		/* Estilos para o botão de fechar */
+		.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+
+</body>
+
+</html>

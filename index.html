@@ -51,6 +51,9 @@
 		</div>
 	</section>
 
+
+	</section>
+
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -71,7 +74,8 @@
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<p style="font-size: 1.5em;"><strong style="color: #2c3464;">ATENÇÃO</strong></p>
-			<p style="font-size: 1.2em; margin-top: -2em;">Usuário não cadastrado.</p>
+			<p style="font-size: 1.2em; margin-top: -2em;">Usuário ou senha inválidos.</p>
+			<p style="font-size: 1.2em; margin-top: -2em;">Verifique e tente novamente.</p>
 		</div>
 	</div>
 
@@ -147,8 +151,8 @@
 	<script>
 		// Quando o documento estiver pronto
 		$(document).ready(function () {
-			// Ao clicar no botão de login
-			$('#login-button').click(function () {
+			// Função para fazer login
+			function doLogin() {
 				var username = $('#demo-email').val();
 				var password = $('#demo-name').val();
 
@@ -159,6 +163,20 @@
 				} else {
 					// Mostrar o modal de usuário não cadastrado
 					$('#myModal').addClass('active');
+				}
+			}
+
+			// Ao clicar no botão de login
+			$('#login-button').click(function () {
+				doLogin();
+			});
+
+			// Ao pressionar a tecla "Enter" nos campos de entrada
+			$('#demo-email, #demo-name').keypress(function (e) {
+				// Se a tecla pressionada for "Enter" (código 13)
+				if (e.which === 13) {
+					// Executar a função de login
+					doLogin();
 				}
 			});
 
