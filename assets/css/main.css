@@ -356,7 +356,7 @@ a.special:not(.button):before {
 }
 
 a.special:not(.button):hover:before {
-	background-color: rgba(255, 0, 0, 0.025)025);
+	background-color: rgba(255, 0, 0, 0.025);
 }
 
 a.special:not(.button):active:before {
@@ -3314,7 +3314,6 @@ button:disabled,
 }
 
 
-.features article:nth-child(2n) {}
 
 .features article .image {
 	border-radius: 5px 5px 5px 5px;
@@ -4580,7 +4579,7 @@ body.is-preload #banner-arm p {
 .wrapper.spotlight .image {
 	border-radius: 5%;
 	margin: 0 3em 2em 0;
-	width: 30em;
+	width: 100%;
 	overflow: hidden;
 	-ms-flex: 1;
 	box-shadow: 0px 0px 15px rgba(0, 0, 0, 10);

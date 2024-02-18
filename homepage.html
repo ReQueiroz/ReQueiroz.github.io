@@ -74,66 +74,51 @@
 
 
 			<!-- One -->
-			<section id="one" class="wrapper spotlight style1">
-				<div class="inner">
-					<style>
-						.image img {
-							transition: transform 0.3s ease-out;
-							/* ou ease-in ou linear */
-						}
+			<style>
+				.wrapper.spotlight.style1 {
+					display: flex;
+					justify-content: space-around;
+					/* Ou outro valor de alinhamento, como space-between */
+				}
+			</style>
 
-						.image img:hover {
-							transform: scale(0.98);
-						}
-					</style>
-					<a href="armazem.html" target="_blank" class="image"><img src="images/pic01.jpg"></a>
-					<div class="content" align="center">
-						<h2 class="major-inicio">ARMAZÉM</h2>
-						<p class="inicio">Nosso armazém é a espinha dorsal da eficiência operacional, oferecendo uma
-							infraestrutura
-							moderna e uma equipe dedicada para garantir o gerenciamento impecável do estoque na unidade.
-						</p>
-						<a href="armazem.html" target="_blank" class="special">FAÇA A GESTÃO DO ARMAZÉM</a>
+			<section id="one" class="wrapper spotlight style1" style="padding: 2em 4em 2em 4em;">
+
+				<div class="inner"
+					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">
+					<a href="armazem.html" target="_blank" class="image" style="margin: 2%;"><img
+							src="images/pic01.jpg"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">ARMAZÉM</h3>
+						<a href="armazem.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style=" margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">
+					<a href="transportes.html" target="_blank" class="image" style="margin: 2%"><img
+							src="images/pic02.jpg"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">TRANSPORTES</h3>
+						<a href="transportes.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+
+				<div class="inner"
+					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">
+					<a href="colaboradores.html" target="_blank" class="image" style="margin: 2%"><img
+							src="images/pic03.jpg"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">COLABORADORES</h3>
+						<a href="colaboradores.html" target="_blank" class="special">ACESSAR</a>
 					</div>
 				</div>
 			</section>
 
-			<!-- Two -->
-			<section id="two" class="wrapper alt spotlight style2">
-				<div class="inner" align="center">
-					<a href="/transportes.html" target="_blank" class="image"><img src="images/pic02.jpg" alt="" /></a>
-					<div class="content">
-						<h2 class="major-inicio">TRANSPORTES</h2>
-						<p class="inicio">Nossa frota de transporte é o pilar da pontualidade e confiabilidade,
-							oferecendo soluções
-							ágeis e seguras para garantir que suas cargas cheguem ao destino sem contratempos.
-						</p>
-						<a href="/transportes.html" target="_blank" class="special">FAÇA A GESTÃO DOS TRANSPORTES</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- Three -->
-			<section id="three" class="wrapper spotlight style3">
-				<div class="inner">
-					<a href="colaboradores.html" target="_blank" class="image"><img src="images/pic03.jpg" alt="" /></a>
-					<div class="content" align="center">
-						<h2 class="major-inicio">COLABORADORES</h2>
-						<p class="inicio">No ambiente de trabalho, cultivamos harmonia e união das pessoas, além de
-							condições para o
-							bom desempenho e
-							desenvolvimento profissional.
-							Para nós, o treinamento e a capacitação dos colaboradores é um processo de muita
-							importância.</p>
-						<a href="colaboradores.html" target="_blank" class="special">ACESSE OS CONTATOS</a>
-					</div>
-				</div>
-			</section>
 
 			<!-- Four -->
 			<section id="four" class="wrapper alt style1">
 				<div class="inner">
-					<h2 class="inicio-dep" align="center">GERENCIE OS DEPARTAMENTOS</h2>
+					<h2 class="inicio-dep" align="center">NAVEGUE POR OUTROS DEPARTAMENTOS</h2>
 					<p class="inicio-dep" align="center">Gerencie os demais setores e departamentos da unidade por meio
 						de Dashboards e KPIs decisivos para a tomada de decições.</p>
 					<section class="features" align="center">
@@ -243,13 +228,6 @@
 			</section>
 
 
-
-
-
-
-
-
-
 			<section id="four" class="wrapper alt style1" style="background-color: #6c7494;">
 				<div class="inner">
 					<h2 class="inicio-dep" align="center">ACESSE OUTRAS UNIDADES</h2>
@@ -292,7 +270,11 @@
 			<section id="footer" align="center">
 				<div class="inner">
 					<ul class="copyright">
-						<li>&copy; RV Ímola Transportes e Logistica LTDA. Todos os direitos reservados.</li>
+						<img src="images/logo.png" style="max-width: 5%;">
+						<img src="images/abol.png" style="max-width: 5%;">
+						<li>&copy; <a href="https://rvimola.com.br">RV Ímola
+							</a>Transportes e Logistica LTDA. Todos os
+							direitos reservados.</li>
 						<a href="https://www.facebook.com/rvimola/" class="icon brands fa-facebook-f"
 							style="color: white;"></a>
 						<a href="https://www.instagram.com/rvimola/" class="icon brands fa-instagram"
@@ -380,6 +362,16 @@
 		.slick-next:before {
 			font-size: 35px;
 			/* Define o tamanho do ícone */
+		}
+	</style>
+	<style>
+		.image img {
+			transition: transform 0.3s ease-out;
+			/* ou ease-in ou linear */
+		}
+
+		.image img:hover {
+			transform: scale(0.98);
 		}
 	</style>
 

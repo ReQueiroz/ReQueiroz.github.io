@@ -284,7 +284,16 @@
 			/* Define o tamanho do ícone */
 		}
 	</style>
+	<style>
+		.image img {
+			transition: transform 0.3s ease-out;
+			/* ou ease-in ou linear */
+		}
 
+		.image img:hover {
+			transform: scale(0.98);
+		}
+	</style>
 </body>
 
 </html>
