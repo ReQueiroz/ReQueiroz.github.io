@@ -2293,6 +2293,7 @@ hr.major {
 
 /* Section/Article */
 
+
 section.special,
 article.special {
 	text-align: center;
@@ -3301,6 +3302,7 @@ button:disabled,
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin: 0 0 2em 0;
+	;
 }
 
 .features article {
