@@ -3619,9 +3619,8 @@ button:disabled,
 	max-width: 100%;
 	opacity: 0;
 	position: relative;
-	width: 18em;
+	width: 25%;
 	color: #ffffff;
-
 }
 
 #menu h2 {
@@ -3635,7 +3634,8 @@ button:disabled,
 	background-image: url("images/close2.svg");
 	background-position: 75% 25%;
 	background-repeat: no-repeat;
-	background-size: 2em 2em;
+	background-size: 1em 1em;
+	/* Reduzindo o tamanho do ícone */
 	border: 0;
 	content: '';
 	display: block;
@@ -3647,7 +3647,8 @@ button:disabled,
 	text-indent: 4em;
 	top: 0;
 	width: 4em;
-	color: #000000;
+	color: transparent;
+	/* Para esconder o texto do botão */
 }
 
 #menu .links {
@@ -3658,13 +3659,13 @@ button:disabled,
 }
 
 #menu .links li {
-	padding: 0;
+	padding: 0em;
 	color: #000000;
 
 }
 
 #menu .links li a {
-	border-radius: 5px;
+	border-radius: 15px;
 	border: 0;
 	display: block;
 	font-family: Raleway, Helvetica, sans-serif;
@@ -3672,9 +3673,11 @@ button:disabled,
 	font-weight: bold;
 	letter-spacing: 0.1em;
 	line-height: 1.85em;
-	padding: 0.7em 0;
+	padding: 0.5em 0;
 	text-transform: uppercase;
 	color: #2c3464;
+	margin: 3%;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 1)
 }
 
 #menu .links li a:hover {

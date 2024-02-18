@@ -41,24 +41,124 @@
 			</nav>
 		</header>
 
-		<!-- Menu -->
-		<nav id="menu">
-			<div class="inner">
+	<!-- Menu -->
+	<nav id="menu">
+		<div class="inner">
+			<h2>Menu</h2>
+			<ul class="links">
+				<li><a href="homepage.html">INÍCIO</a></li>
+				<li><a href="armazem.html">ARMAZÉM</a></li>
+				<li><a href="transportes.html">TRANSPORTES</a></li>
+				<li id="colaboradores">
+					<a href="colaboradores.html" class="special">COLABORADORES</a>
+					<ul class="submenu" style="margin: 0px; border: 1px; box-shadow: inset #2c3464;">
+						<a href="organogramas.html">Organogramas</a>
+						<a href="colab-listagem.html">Lista de Contatos</a>
+					</ul>
+				</li>
+				<li><a href="departamentos.html">DEPARTAMENTOS</a></li>
+				<li id="unidades">
+					<a href="unidades.html" class="special">UNIDADES</a>
+					<ul class="submenu" style="margin: 0; border: 1px">
+						<a href="sessp.html">GRU 1</a>
+						<a href="smsgru.html">GRU 2</a>
+						<a href="ccd.html">GRU 3</a>
+						<a href="ccd.html">RJO</a>
+						<a href="ccd.html">RAO</a>
+						<a href="domicile.html">JBT</a>
+					</ul>
+				</li>
+				<li id="clientes">
+					<a href="clientes.html" class="special">CLIENTES</a>
+					<ul class="submenu" style="margin: 0; border: 1px">
+						<a href="sessp.html">SESSP</a>
+						<a href="smsgru.html">SMSGRU</a>
+						<a href="ccd.html">CCD</a>
+						<a href="domicile.html">DOMICILE</a>
+					</ul>
+				</li>
+				<li><a href="renatoqueiroz.html">CRÉDITOS</a></li>
+			</ul>
+			<a href="#" class="close"></a>
+		</div>
+	</nav>
 
-				<h2>Menu</h2>
-				<ul class="links">
-					<li><a href="homepage.html">INÍCIO</a></li>
-					<li><a href="armazem.html">ARMAZÉM</a></li>
-					<li><a href="transportes.html">TRANSPORTES</a></li>
-					<li><a href="colaboradores.html">COLABORADORES</a></li>
-					<li><a href="departamentos.html">DEPARTAMENTOS</a></li>
-					<li><a href="unidades.html">UNIDADES</a></li>
-					<li><a href="clientes.html">CLIENTES</a></li>
-					<li><a href="renatoqueiroz.html">CRÉDITOS</a></li>
-				</ul>
-				<a href="#" class="close"></a>
-			</div>
-		</nav>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			var colaboradoresLi = document.getElementById("colaboradores");
+			var unidadesLi = document.getElementById("unidades");
+			var clientesLi = document.getElementById("clientes");
+
+			function showSubmenu(li) {
+				var submenu = li.querySelector(".submenu");
+				submenu.classList.add("active");
+			}
+
+			function hideSubmenu(li) {
+				var submenu = li.querySelector(".submenu");
+				submenu.classList.remove("active");
+			}
+
+			colaboradoresLi.addEventListener("mouseenter", function () {
+				showSubmenu(colaboradoresLi);
+			});
+			colaboradoresLi.addEventListener("mouseleave", function () {
+				hideSubmenu(colaboradoresLi);
+			});
+
+			unidadesLi.addEventListener("mouseenter", function () {
+				showSubmenu(unidadesLi);
+			});
+			unidadesLi.addEventListener("mouseleave", function () {
+				hideSubmenu(unidadesLi);
+			});
+
+			clientesLi.addEventListener("mouseenter", function () {
+				showSubmenu(clientesLi);
+			});
+			clientesLi.addEventListener("mouseleave", function () {
+				hideSubmenu(clientesLi);
+			});
+
+			// Adicionar eventos de clique aos submenus
+			var submenus = document.querySelectorAll(".submenu");
+			submenus.forEach(function (submenu) {
+				submenu.addEventListener("click", function (event) {
+					event.stopPropagation(); // Impede que o evento de clique no submenu propague para o menu principal
+				});
+			});
+
+			// Adicionar evento de clique ao botão de close
+			document.querySelector("#menu .close").addEventListener("click", function (event) {
+				event.preventDefault();
+				// Fechar o menu aqui
+				console.log("Fechar menu");
+			});
+		});
+	</script>
+
+	<style>
+		/* Adiciona estilos para os submenus */
+		.submenu {
+			opacity: 0;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.6s ease, opacity 0.6s ease;
+		}
+
+		.submenu.active {
+			max-height: 2000px;
+			/* Ajuste conforme necessário */
+			opacity: 1;
+		}
+
+		/* Adiciona rolagem vertical ao menu */
+		#menu .inner {
+			overflow-y: auto;
+			max-height: 800vh;
+			/* Defina a altura máxima conforme necessário */
+		}
+	</style>
 
 		<!-- Banner -->
 		<section id="banner"
@@ -117,6 +217,13 @@
 
 
 						<div class="table-wrapper" style="color: white;">
+							<style>
+								#default-table tbody tr:nth-child(even) {
+									background-color: #fefefe;
+									box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);
+									/* Define a cor de fundo para linhas pares */
+								}
+							</style>
 							<table id="default-table" style="background-color: white; text-align: center;">
 								<thead style="background-color: #2c3464; box-shadow: 0px 0px 15px rgba(0, 0, 0, 1);">
 									<tr>
@@ -124,17 +231,19 @@
 										<th style="text-align: center;">Nome Completo</th>
 										<th style="text-align: center;">Unidade</th>
 										<th style="text-align: center;">E-mail</th>
+										<th style="text-align: center;">Telefone</th>
 										<th style="text-align: center;">Ramal</th>
 										<th style="text-align: center;">Departamento</th>
 									</tr>
 								</thead>
 								<tbody
-									style="font-weight: bold; color: #2c3464; background-color: white; box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);">
+									style="font-weight: bold; color: #2c3464; background-color: white; box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4);">
 									<tr>
 										<td>111025</td>
 										<td>Renato Silva de Queiroz</td>
 										<td>GRU 2</td>
 										<td>renato.queiroz@rvimola.com.br</td>
+										<td>(11) 91234-5678</td>
 										<td>1307</td>
 										<td>Operacional</td>
 									</tr>
@@ -143,6 +252,7 @@
 										<td>José da Silva Pereira</td>
 										<td>GRU 2</td>
 										<td>jose.silva@rvimola.com.br</td>
+										<td>(11) 94567-8901</td>
 										<td>1309</td>
 										<td>TI</td>
 									</tr>
@@ -151,6 +261,7 @@
 										<td>Maria Oliveira Santos</td>
 										<td>GRU 2</td>
 										<td>maria.oliveira@rvimola.com.br</td>
+										<td>(11) 92345-6789</td>
 										<td>1345</td>
 										<td>Frota</td>
 									</tr>
@@ -159,6 +270,7 @@
 										<td>João Santos Silva</td>
 										<td>GRU 2</td>
 										<td>joao.santos@rvimola.com.br</td>
+										<td>(11) 93456-7890</td>
 										<td>1321</td>
 										<td>Operacional</td>
 									</tr>
@@ -167,6 +279,7 @@
 										<td>Ana Costa Pereira</td>
 										<td>GRU 2</td>
 										<td>ana.costa@rvimola.com.br</td>
+										<td>(11) 95678-9012</td>
 										<td>1387</td>
 										<td>Expedição</td>
 									</tr>
@@ -175,6 +288,7 @@
 										<td>Carlos Pereira Almeida</td>
 										<td>GRU 2</td>
 										<td>carlos.pereira@rvimola.com.br</td>
+										<td>(11) 96789-0123</td>
 										<td>1341</td>
 										<td>Transportes</td>
 									</tr>
@@ -183,6 +297,7 @@
 										<td>Juliana Almeida Silva</td>
 										<td>GRU 2</td>
 										<td>juliana.almeida@rvimola.com.br</td>
+										<td>(11) 97890-1234</td>
 										<td>1393</td>
 										<td>Operacional</td>
 									</tr>
@@ -191,6 +306,7 @@
 										<td>Pedro Carvalho Oliveira</td>
 										<td>GRU 2</td>
 										<td>pedro.carvalho@rvimola.com.br</td>
+										<td>(11) 98901-2345</td>
 										<td>1376</td>
 										<td>TI</td>
 									</tr>
@@ -199,6 +315,7 @@
 										<td>Fernanda Machado Santos</td>
 										<td>GRU 2</td>
 										<td>fernanda.machado@rvimola.com.br</td>
+										<td>(11) 90012-3456</td>
 										<td>1349</td>
 										<td>RH</td>
 									</tr>
@@ -207,6 +324,7 @@
 										<td>Luiz Oliveira Almeida</td>
 										<td>GRU 2</td>
 										<td>luiz.oliveira@rvimola.com.br</td>
+										<td>(11) 91123-4567</td>
 										<td>1338</td>
 										<td>Aéreo</td>
 									</tr>
@@ -215,6 +333,7 @@
 										<td>André da Costa Silva</td>
 										<td>GRU 2</td>
 										<td>andre.costa@rvimola.com.br</td>
+										<td>(11) 92234-5678</td>
 										<td>1324</td>
 										<td>Expedição</td>
 									</tr>
@@ -223,6 +342,7 @@
 										<td>Gabriela Oliveira Almeida</td>
 										<td>GRU 2</td>
 										<td>gabriela.oliveira@rvimola.com.br</td>
+										<td>(11) 93345-6789</td>
 										<td>1375</td>
 										<td>Frota</td>
 									</tr>
@@ -231,6 +351,7 @@
 										<td>Ricardo Pereira Santos</td>
 										<td>GRU 2</td>
 										<td>ricardo.pereira@rvimola.com.br</td>
+										<td>(11) 94456-7890</td>
 										<td>1383</td>
 										<td>Operacional</td>
 									</tr>
@@ -239,6 +360,7 @@
 										<td>Camila Silva Oliveira</td>
 										<td>GRU 2</td>
 										<td>camila.silva@rvimola.com.br</td>
+										<td>(11) 95567-8901</td>
 										<td>1337</td>
 										<td>Transportes</td>
 									</tr>
@@ -247,6 +369,7 @@
 										<td>Marcos Oliveira Alves</td>
 										<td>GRU 2</td>
 										<td>marcos.alves@rvimola.com.br</td>
+										<td>(11) 96678-9012</td>
 										<td>1312</td>
 										<td>Operacional</td>
 									</tr>
@@ -255,6 +378,7 @@
 										<td>Ana Paula Pereira Oliveira</td>
 										<td>GRU 2</td>
 										<td>ana.paula@rvimola.com.br</td>
+										<td>(11) 97789-0123</td>
 										<td>1399</td>
 										<td>TI</td>
 									</tr>
@@ -263,6 +387,7 @@
 										<td>Leandro Almeida Costa</td>
 										<td>GRU 2</td>
 										<td>leandro.costa@rvimola.com.br</td>
+										<td>(11) 98890-1234</td>
 										<td>1355</td>
 										<td>RH</td>
 									</tr>
@@ -271,6 +396,7 @@
 										<td>Sandra Oliveira Santos</td>
 										<td>GRU 2</td>
 										<td>sandra.santos@rvimola.com.br</td>
+										<td>(11) 99901-2345</td>
 										<td>1325</td>
 										<td>Aéreo</td>
 									</tr>
@@ -279,6 +405,7 @@
 										<td>Rafael Silva Pereira</td>
 										<td>GRU 2</td>
 										<td>rafael.silva@rvimola.com.br</td>
+										<td>(11) 90012-3456</td>
 										<td>1371</td>
 										<td>Expedição</td>
 									</tr>
@@ -287,6 +414,7 @@
 										<td>Larissa Alves Pereira</td>
 										<td>GRU 2</td>
 										<td>larissa.alves@rvimola.com.br</td>
+										<td>(11) 91123-4567</td>
 										<td>1359</td>
 										<td>Frota</td>
 									</tr>
@@ -295,6 +423,7 @@
 										<td>Rodrigo Oliveira Silva</td>
 										<td>GRU 2</td>
 										<td>rodrigo.oliveira@rvimola.com.br</td>
+										<td>(11) 92234-5678</td>
 										<td>1346</td>
 										<td>Operacional</td>
 									</tr>
@@ -303,6 +432,7 @@
 										<td>Leticia Pereira Almeida</td>
 										<td>GRU 2</td>
 										<td>leticia.pereira@rvimola.com.br</td>
+										<td>(11) 93345-6789</td>
 										<td>1382</td>
 										<td>Transportes</td>
 									</tr>
@@ -311,6 +441,7 @@
 										<td>Marcelo Almeida Oliveira</td>
 										<td>GRU 2</td>
 										<td>marcelo.almeida@rvimola.com.br</td>
+										<td>(11) 94456-7890</td>
 										<td>1369</td>
 										<td>Operacional</td>
 									</tr>
@@ -337,6 +468,10 @@
 										<span class="close" onclick="closeModal()">&times;</span>
 										<h3 class="major" style="color: #2c3464">CADASTRO DE NOVO COLABORADOR</h3>
 										<div style="margin-bottom: 1em;">
+											<label for="new-id" style="color: #2c3464">ID do Colaborador:</label>
+											<input type="text" id="new-id" placeholder="ID">
+										</div>
+										<div style="margin-bottom: 1em;">
 											<label for="new-name" style="color: #2c3464">Nome do Colaborador:</label>
 											<input type="text" id="new-name" placeholder="Nome completo">
 										</div>
@@ -347,6 +482,10 @@
 										<div style="margin-bottom: 1em;">
 											<label for="new-email" style="color: #2c3464">E-mail:</label>
 											<input type="email" id="new-email" placeholder="E-mail">
+										</div>
+										<div style="margin-bottom: 1em;">
+											<label for="new-telefone" style="color: #2c3464">Telefone</label>
+											<input type="text" id="new-telefone" placeholder="Telefone">
 										</div>
 										<div style="margin-bottom: 1em;">
 											<label for="new-ramal" style="color: #2c3464">Ramal:</label>
@@ -509,9 +648,7 @@
 				}
 			}
 		}
-	</script>
 
-	<script>
 		// Função para abrir o modal
 		function openModal() {
 			var modal = document.getElementById("myModal");
@@ -530,33 +667,38 @@
 		}
 
 		function addNewUser() {
+			var id = document.getElementById("new-id").value.trim();
 			var name = document.getElementById("new-name").value.trim();
 			var unit = document.getElementById("new-unit").value.trim();
 			var email = document.getElementById("new-email").value.trim();
+			var telefone = document.getElementById("new-telefone").value.trim();
 			var ramal = document.getElementById("new-ramal").value.trim();
 			var department = document.getElementById("new-department").value;
 
-			if (name === "" || unit === "" || email === "" || ramal === "") {
+			if (id === "" || name === "" || unit === "" || email === "" || telefone === "" || ramal === "") {
 				alert("Por favor, preencha todos os campos.");
 				return;
 			}
 
 			var newRow = document.createElement("tr");
 			newRow.innerHTML = `
-			<td>${generateMatricula()}</td>
-			<td>${name}</td>
-			<td>${unit}</td>
-			<td>${email}</td>
-			<td>${ramal}</td>
-			<td>${department}</td>
-		`;
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${unit}</td>
+            <td>${email}</td>
+            <td>${telefone}</td>
+            <td>${ramal}</td>
+            <td>${department}</td>
+        `;
 
 			document.getElementById("default-table").getElementsByTagName("tbody")[0].appendChild(newRow);
 
 			// Limpa os campos do formulário após adicionar o novo colaborador
+			document.getElementById("new-id").value = "";
 			document.getElementById("new-name").value = "";
 			document.getElementById("new-unit").value = "";
 			document.getElementById("new-email").value = "";
+			document.getElementById("new-telefone").value = "";
 			document.getElementById("new-ramal").value = "";
 
 			// Fecha o modal após adicionar o colaborador
@@ -565,15 +707,6 @@
 			alert("Colaborador adicionado com sucesso!");
 		}
 
-		// Função para gerar uma matrícula aleatória de 6 dígitos
-		function generateMatricula() {
-			var min = 100000;
-			var max = 999999;
-			return Math.floor(Math.random() * (max - min + 1)) + min;
-		}
-	</script>
-
-	<script>
 		function toggleCadastro() {
 			var cadastroSection = document.getElementById("cadastro-section");
 			if (cadastroSection.style.display === "none") {
@@ -581,46 +714,6 @@
 			} else {
 				cadastroSection.style.display = "none";
 			}
-		}
-
-		function addNewUser() {
-			var name = document.getElementById("new-name").value.trim();
-			var unit = document.getElementById("new-unit").value.trim();
-			var email = document.getElementById("new-email").value.trim();
-			var ramal = document.getElementById("new-ramal").value.trim();
-			var department = document.getElementById("new-department").value;
-
-			if (name === "" || unit === "" || email === "" || ramal === "") {
-				alert("Por favor, preencha todos os campos.");
-				return;
-			}
-
-			var newRow = document.createElement("tr");
-			newRow.innerHTML = `
-<td>${generateMatricula()}</td>
-<td>${name}</td>
-<td>${unit}</td>
-<td>${email}</td>
-<td>${ramal}</td>
-<td>${department}</td>
-`;
-
-			document.getElementById("default-table").getElementsByTagName("tbody")[0].appendChild(newRow);
-
-			// Limpa os campos do formulário após adicionar o novo colaborador
-			document.getElementById("new-name").value = "";
-			document.getElementById("new-unit").value = "";
-			document.getElementById("new-email").value = "";
-			document.getElementById("new-ramal").value = "";
-
-			alert("Colaborador adicionado com sucesso!");
-		}
-
-		// Função para gerar uma matrícula aleatória de 6 dígitos
-		function generateMatricula() {
-			var min = 100000;
-			var max = 999999;
-			return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
 	</script>
 
@@ -659,11 +752,12 @@
 	<script>
 		function filterTable() {
 			var input, filter, table, tr, td, i, txtValue;
-			input = document.getElementById(" demo-name"); filter = input.value.toUpperCase();
-			table = document.getElementById("default-table"); tr = table.getElementsByTagName("tr");
+			input = document.getElementById("demo-name"); // Corrigido aqui removendo o espaço extra
+			filter = input.value.toUpperCase();
+			table = document.getElementById("default-table");
+			tr = table.getElementsByTagName("tr");
 			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[1]; // Index 1
-para o segundo < td > que contém o nome
+				td = tr[i].getElementsByTagName("td")[1]; // Index 1 para o segundo <td> que contém o nome
 				if (td) {
 					txtValue = td.textContent || td.innerText;
 					if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -675,6 +769,7 @@ para o segundo < td > que contém o nome
 			}
 		}
 	</script>
+
 
 
 

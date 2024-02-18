@@ -41,24 +41,147 @@
 			</nav>
 		</header>
 
-		<!-- Menu -->
+			<!-- Menu -->
 		<nav id="menu">
 			<div class="inner">
-
 				<h2>Menu</h2>
 				<ul class="links">
 					<li><a href="homepage.html">INÍCIO</a></li>
 					<li><a href="armazem.html">ARMAZÉM</a></li>
 					<li><a href="transportes.html">TRANSPORTES</a></li>
-					<li><a href="colaboradores.html">COLABORADORES</a></li>
+					<li id="colaboradores">
+						<a href="colaboradores.html" class="special">COLABORADORES</a>
+						<ul class="submenu" style="margin: 0px; border: 1px; box-shadow: inset #2c3464;">
+							<a href="organogramas.html">Organogramas</a>
+							<a href="colab-listagem.html">Lista de Contatos</a>
+						</ul>
+					</li>
 					<li><a href="departamentos.html">DEPARTAMENTOS</a></li>
-					<li><a href="unidades.html">UNIDADES</a></li>
-					<li><a href="clientes.html">CLIENTES</a></li>
+					<li id="unidades">
+						<a href="unidades.html" class="special">UNIDADES</a>
+						<ul class="submenu" style="margin: 0; border: 1px">
+							<a href="sessp.html">GRU 1</a>
+							<a href="smsgru.html">GRU 2</a>
+							<a href="ccd.html">GRU 3</a>
+							<a href="ccd.html">RJO</a>
+							<a href="ccd.html">RAO</a>
+							<a href="domicile.html">JBT</a>
+						</ul>
+					</li>
+					<li id="clientes">
+						<a href="clientes.html" class="special">CLIENTES</a>
+						<ul class="submenu" style="margin: 0; border: 1px">
+							<a href="sessp.html">SESSP</a>
+							<a href="smsgru.html">SMSGRU</a>
+							<a href="ccd.html">CCD</a>
+							<a href="domicile.html">DOMICILE</a>
+						</ul>
+					</li>
 					<li><a href="renatoqueiroz.html">CRÉDITOS</a></li>
 				</ul>
 				<a href="#" class="close"></a>
 			</div>
 		</nav>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				var colaboradoresLi = document.getElementById("colaboradores");
+				var unidadesLi = document.getElementById("unidades");
+				var clientesLi = document.getElementById("clientes");
+
+				function showSubmenu(li) {
+					var submenu = li.querySelector(".submenu");
+					submenu.classList.add("active");
+				}
+
+				function hideSubmenu(li) {
+					var submenu = li.querySelector(".submenu");
+					submenu.classList.remove("active");
+				}
+
+				colaboradoresLi.addEventListener("mouseenter", function () {
+					showSubmenu(colaboradoresLi);
+				});
+				colaboradoresLi.addEventListener("mouseleave", function () {
+					hideSubmenu(colaboradoresLi);
+				});
+
+				unidadesLi.addEventListener("mouseenter", function () {
+					showSubmenu(unidadesLi);
+				});
+				unidadesLi.addEventListener("mouseleave", function () {
+					hideSubmenu(unidadesLi);
+				});
+
+				clientesLi.addEventListener("mouseenter", function () {
+					showSubmenu(clientesLi);
+				});
+				clientesLi.addEventListener("mouseleave", function () {
+					hideSubmenu(clientesLi);
+				});
+
+				// Adicionar eventos de clique aos submenus
+				var submenus = document.querySelectorAll(".submenu");
+				submenus.forEach(function (submenu) {
+					submenu.addEventListener("click", function (event) {
+						event.stopPropagation(); // Impede que o evento de clique no submenu propague para o menu principal
+					});
+				});
+
+				// Adicionar evento de clique ao botão de close
+				document.querySelector("#menu .close").addEventListener("click", function (event) {
+					event.preventDefault();
+					// Fechar o menu aqui
+					console.log("Fechar menu");
+				});
+			});
+		</script>
+
+		<style>
+			/* Adiciona estilos para os submenus */
+			.submenu {
+				opacity: 0;
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.6s ease, opacity 0.6s ease;
+			}
+
+			.submenu.active {
+				max-height: 2000px;
+				/* Ajuste conforme necessário */
+				opacity: 1;
+			}
+
+			/* Adiciona rolagem vertical ao menu */
+			#menu .inner {
+				overflow-y: auto;
+				max-height: 800vh;
+				/* Defina a altura máxima conforme necessário */
+			}
+		</style>
+	
+			<style>
+				/* Adiciona estilos para os submenus */
+				.submenu {
+					opacity: 0;
+					max-height: 0;
+					overflow: hidden;
+					transition: max-height 0.6s ease, opacity 0.6s ease;
+				}
+	
+				.submenu.active {
+					max-height: 2000px;
+					/* Ajuste conforme necessário */
+					opacity: 1;
+				}
+	
+				/* Adiciona rolagem vertical ao menu */
+				#menu .inner {
+					overflow-y: auto;
+					max-height: 800vh;
+					/* Defina a altura máxima conforme necessário */
+				}
+			</style>
 
 		<!-- Banner -->
 		<section id="banner"
@@ -442,25 +565,26 @@
 		});
 	</script>
 
-	<script>
-		function filterTable() {
-			var input, filter, table, tr, td, i, txtValue;
-			input = document.getElementById(" demo-name"); filter = input.value.toUpperCase();
-			table = document.getElementById("default-table"); tr = table.getElementsByTagName("tr");
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[1]; // Index 1
-para o segundo < td > que contém o nome
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
+<script>
+	function filterTable() {
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("demo-name"); // Corrigido aqui removendo o espaço extra
+		filter = input.value.toUpperCase();
+		table = document.getElementById("default-table");
+		tr = table.getElementsByTagName("tr");
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[1]; // Index 1 para o segundo <td> que contém o nome
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
 				}
 			}
 		}
-	</script>
+	}
+</script>
 
 
 
