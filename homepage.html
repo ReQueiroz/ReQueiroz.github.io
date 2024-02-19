@@ -183,18 +183,19 @@
 			</style>
 
 			<section id="one" class="wrapper spotlight style1" style="padding: 2em 4em 2em 4em;">
-
 				<div class="inner"
-					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">
+					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 					<a href="armazem.html" target="_blank" class="image" style="margin: 2%;"><img
 							src="images/pic01.jpg"></a>
 					<div class="content" align="center" style="padding: 5%;">
-						<H3 class="major-inicio">ARMAZÉM</h3>
+						<h3 class="major-inicio">ARMAZÉM</h3>
 						<a href="armazem.html" target="_blank" class="special">ACESSAR</a>
 					</div>
 				</div>
 				<div class="inner"
-					style=" margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">
+					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 					<a href="transportes.html" target="_blank" class="image" style="margin: 2%"><img
 							src="images/pic02.jpg"></a>
 					<div class="content" align="center" style="padding: 5%;">
@@ -204,7 +205,8 @@
 				</div>
 
 				<div class="inner"
-					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">
+					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 					<a href="colaboradores.html" target="_blank" class="image" style="margin: 2%"><img
 							src="images/pic03.jpg"></a>
 					<div class="content" align="center" style="padding: 5%;">
@@ -447,6 +449,16 @@
 				]
 			});
 		});
+
+		function expandInner(element) {
+			element.style.transition = "width 0.5s ease";
+			element.style.width = "100%";
+		}
+
+		function collapseInner(element) {
+			element.style.transition = "width 0.5s ease";
+			element.style.width = ""; // Reseta a largura para o valor padrão
+		}
 	</script>
 
 	<a href="#top">
