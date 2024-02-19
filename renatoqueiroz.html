@@ -35,7 +35,7 @@
 			</nav>
 		</header>
 
-			<!-- Menu -->
+		<!-- Menu -->
 		<nav id="menu">
 			<div class="inner">
 				<h2>Menu</h2>
@@ -43,7 +43,7 @@
 					<li><a href="homepage.html">INÍCIO</a></li>
 					<li><a href="armazem.html">ARMAZÉM</a></li>
 					<li><a href="transportes.html">TRANSPORTES</a></li>
-					<li id="colaboradores">
+					<li id="colaboradores" onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 						<a href="colaboradores.html" class="special">COLABORADORES</a>
 						<ul class="submenu" style="margin: 0px; border: 1px; box-shadow: inset #2c3464;">
 							<a href="organogramas.html">Organogramas</a>
@@ -51,7 +51,7 @@
 						</ul>
 					</li>
 					<li><a href="departamentos.html">DEPARTAMENTOS</a></li>
-					<li id="unidades">
+					<li id="unidades" onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 						<a href="unidades.html" class="special">UNIDADES</a>
 						<ul class="submenu" style="margin: 0; border: 1px">
 							<a href="index-gru1.html">GRU 1</a>
@@ -62,7 +62,7 @@
 							<a href="index-jbt.html">JBT</a>
 						</ul>
 					</li>
-					<li id="clientes">
+					<li id="clientes" onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 						<a href="clientes.html" class="special">CLIENTES</a>
 						<ul class="submenu" style="margin: 0; border: 1px">
 							<a href="sessp.html">SESSP</a>
@@ -153,29 +153,29 @@
 				/* Defina a altura máxima conforme necessário */
 			}
 		</style>
-	
-			<style>
-				/* Adiciona estilos para os submenus */
-				.submenu {
-					opacity: 0;
-					max-height: 0;
-					overflow: hidden;
-					transition: max-height 0.6s ease, opacity 0.6s ease;
-				}
-	
-				.submenu.active {
-					max-height: 2000px;
-					/* Ajuste conforme necessário */
-					opacity: 1;
-				}
-	
-				/* Adiciona rolagem vertical ao menu */
-				#menu .inner {
-					overflow-y: auto;
-					max-height: 800vh;
-					/* Defina a altura máxima conforme necessário */
-				}
-			</style>
+
+		<style>
+			/* Adiciona estilos para os submenus */
+			.submenu {
+				opacity: 0;
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.6s ease, opacity 0.6s ease;
+			}
+
+			.submenu.active {
+				max-height: 2000px;
+				/* Ajuste conforme necessário */
+				opacity: 1;
+			}
+
+			/* Adiciona rolagem vertical ao menu */
+			#menu .inner {
+				overflow-y: auto;
+				max-height: 800vh;
+				/* Defina a altura máxima conforme necessário */
+			}
+		</style>
 
 		<!-- Wrapper -->
 		<section id="wrapper">
