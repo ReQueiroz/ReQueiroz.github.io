@@ -429,6 +429,39 @@
 				]
 			});
 		});
+		
+		function expandInner(element) {
+			element.style.transition = "width 0.5s ease";
+			element.style.width = "100%";
+
+			// Define a opacidade dos outros elementos .inner para 0.5
+			var siblingElements = getSiblings(element);
+			for (var i = 0; i < siblingElements.length; i++) {
+				siblingElements[i].style.opacity = '0.4';
+			}
+		}
+
+		function collapseInner(element) {
+			element.style.transition = "width 0.5s ease";
+			element.style.width = ""; // Reseta a largura para o valor padrão
+
+			// Define a opacidade dos outros elementos .inner de volta para 1
+			var siblingElements = getSiblings(element);
+			for (var i = 0; i < siblingElements.length; i++) {
+				siblingElements[i].style.opacity = '1';
+			}
+		}
+
+		function getSiblings(element) {
+			var siblings = [];
+			var sibling = element.parentNode.firstChild;
+			for (; sibling; sibling = sibling.nextSibling) {
+				if (sibling.nodeType === 1 && sibling !== element) {
+					siblings.push(sibling);
+				}
+			}
+			return siblings;
+		}
 	</script>
 
 	<a href="#top">

@@ -159,29 +159,29 @@
 				/* Defina a altura máxima conforme necessário */
 			}
 		</style>
-	
-			<style>
-				/* Adiciona estilos para os submenus */
-				.submenu {
-					opacity: 0;
-					max-height: 0;
-					overflow: hidden;
-					transition: max-height 0.6s ease, opacity 0.6s ease;
-				}
-	
-				.submenu.active {
-					max-height: 2000px;
-					/* Ajuste conforme necessário */
-					opacity: 1;
-				}
-	
-				/* Adiciona rolagem vertical ao menu */
-				#menu .inner {
-					overflow-y: auto;
-					max-height: 800vh;
-					/* Defina a altura máxima conforme necessário */
-				}
-			</style>
+
+		<style>
+			/* Adiciona estilos para os submenus */
+			.submenu {
+				opacity: 0;
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.6s ease, opacity 0.6s ease;
+			}
+
+			.submenu.active {
+				max-height: 2000px;
+				/* Ajuste conforme necessário */
+				opacity: 1;
+			}
+
+			/* Adiciona rolagem vertical ao menu */
+			#menu .inner {
+				overflow-y: auto;
+				max-height: 800vh;
+				/* Defina a altura máxima conforme necessário */
+			}
+		</style>
 
 		<!-- Banner -->
 		<section id="banner"
@@ -195,7 +195,24 @@
 		<!-- Wrapper -->
 		<section id="wrapper">
 
+			<section id="one" class="wrapper spotlight style1">
+				<div class="inner">
+					<style>
+						.image img {
+							transition: transform 0.3s ease-out;
+							/* ou ease-in ou linear */
+						}
 
+						.image img:hover {
+							transform: scale(0.98);
+						}
+					</style>
+					<div class="content" align="center">
+						<h2 class="major-inicio">ORGANOGRAMA CORPORATIVO</h2>
+						<a href="#" target="_blank" class="image" style="width: 65%;"><img
+								src="images/organograma-corp.PNG"></a>
+					</div>
+			</section>
 			<!-- Four -->
 			<section id="four" class="wrapper alt style1">
 				<div class="inner">
@@ -565,26 +582,60 @@
 		});
 	</script>
 
-<script>
-	function filterTable() {
-		var input, filter, table, tr, td, i, txtValue;
-		input = document.getElementById("demo-name"); // Corrigido aqui removendo o espaço extra
-		filter = input.value.toUpperCase();
-		table = document.getElementById("default-table");
-		tr = table.getElementsByTagName("tr");
-		for (i = 0; i < tr.length; i++) {
-			td = tr[i].getElementsByTagName("td")[1]; // Index 1 para o segundo <td> que contém o nome
-			if (td) {
-				txtValue = td.textContent || td.innerText;
-				if (txtValue.toUpperCase().indexOf(filter) > -1) {
-					tr[i].style.display = "";
-				} else {
-					tr[i].style.display = "none";
+	<script>
+		function filterTable() {
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("demo-name"); // Corrigido aqui removendo o espaço extra
+			filter = input.value.toUpperCase();
+			table = document.getElementById("default-table");
+			tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1]; // Index 1 para o segundo <td> que contém o nome
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
 				}
 			}
 		}
-	}
-</script>
+
+		
+		function expandInner(element) {
+			element.style.transition = "width 0.5s ease";
+			element.style.width = "100%";
+
+			// Define a opacidade dos outros elementos .inner para 0.5
+			var siblingElements = getSiblings(element);
+			for (var i = 0; i < siblingElements.length; i++) {
+				siblingElements[i].style.opacity = '0.4';
+			}
+		}
+
+		function collapseInner(element) {
+			element.style.transition = "width 0.5s ease";
+			element.style.width = ""; // Reseta a largura para o valor padrão
+
+			// Define a opacidade dos outros elementos .inner de volta para 1
+			var siblingElements = getSiblings(element);
+			for (var i = 0; i < siblingElements.length; i++) {
+				siblingElements[i].style.opacity = '1';
+			}
+		}
+
+		function getSiblings(element) {
+			var siblings = [];
+			var sibling = element.parentNode.firstChild;
+			for (; sibling; sibling = sibling.nextSibling) {
+				if (sibling.nodeType === 1 && sibling !== element) {
+					siblings.push(sibling);
+				}
+			}
+			return siblings;
+		}
+	</script>
 
 
 
