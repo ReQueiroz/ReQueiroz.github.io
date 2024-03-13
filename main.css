@@ -356,7 +356,7 @@ a.special:not(.button):before {
 }
 
 a.special:not(.button):hover:before {
-	background-color: rgba(255, 0, 0, 0.025)025);
+	background-color: rgba(255, 0, 0, 0.025);
 }
 
 a.special:not(.button):active:before {
@@ -2293,6 +2293,7 @@ hr.major {
 
 /* Section/Article */
 
+
 section.special,
 article.special {
 	text-align: center;
@@ -2398,16 +2399,19 @@ textarea {
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
-	background: rgba(255, 255, 255, 0.025);
+	background: rgba(255, 255, 255, 1);
+	/* Valor alfa ajustado para 0.8 (80% de opacidade) */
 	border-radius: 5px;
 	border: none;
-	border: solid 2px rgba(255, 255, 255, 0.125);
-	color: inherit;
+	border: solid 2px #2c3464;
+	color: rgba(44, 52, 100, 0.7);
+	/* Mesma cor com valor alfa ajustado para 0.8 (80% de opacidade) */
 	display: block;
 	outline: 0;
 	padding: 0 1em;
 	text-decoration: none;
 	width: 100%;
+	font-weight: 600;
 }
 
 input[type="text"]:invalid,
@@ -2425,7 +2429,7 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 select:focus,
 textarea:focus {
-	border-color: #5b6ba6;
+	border-color: #2c3464;
 }
 
 select {
@@ -2622,6 +2626,12 @@ input[type="radio"]+label:before {
 	font-family: 'Font Awesome 5 Brands';
 }
 
+li.icon a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
 /* Image */
 
 .image {
@@ -2695,7 +2705,7 @@ ol li {
 
 ul {
 	list-style: disc;
-	margin: 0 0 2em 0;
+	margin: 3em 0 3em 0;
 	padding-left: 1em;
 }
 
@@ -3171,9 +3181,11 @@ button:hover,
 }
 
 .button-home:hover {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.3);
 
 }
+
+
 
 .button-dep:hover {
 	background-color: rgba(255, 255, 255, 0.2);
@@ -3290,6 +3302,7 @@ button:disabled,
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin: 0 0 2em 0;
+	;
 }
 
 .features article {
@@ -3303,7 +3316,6 @@ button:disabled,
 }
 
 
-.features article:nth-child(2n) {}
 
 .features article .image {
 	border-radius: 5px 5px 5px 5px;
@@ -3376,7 +3388,7 @@ button:disabled,
 	-webkit-transition: background-color 0.2s ease-in-out;
 	-ms-transition: background-color 0.2s ease-in-out;
 	transition: background-color 0.2s ease-in-out;
-	background-color: rgba(255, 255, 255, 0.95);
+	background-color: rgba(255, 255, 255, 1);
 	height: 3.5em;
 	left: 0;
 	line-height: 3.5em;
@@ -3578,7 +3590,7 @@ button:disabled,
 	-ms-user-select: none;
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.3);
+	background-color: rgba(0, 0, 0, 0.6);
 	cursor: default;
 	height: 100%;
 	left: 0;
@@ -3609,9 +3621,8 @@ button:disabled,
 	max-width: 100%;
 	opacity: 0;
 	position: relative;
-	width: 18em;
+	width: 25%;
 	color: #ffffff;
-
 }
 
 #menu h2 {
@@ -3625,7 +3636,8 @@ button:disabled,
 	background-image: url("images/close2.svg");
 	background-position: 75% 25%;
 	background-repeat: no-repeat;
-	background-size: 2em 2em;
+	background-size: 1em 1em;
+	/* Reduzindo o tamanho do ícone */
 	border: 0;
 	content: '';
 	display: block;
@@ -3637,7 +3649,8 @@ button:disabled,
 	text-indent: 4em;
 	top: 0;
 	width: 4em;
-	color: #000000;
+	color: transparent;
+	/* Para esconder o texto do botão */
 }
 
 #menu .links {
@@ -3648,13 +3661,13 @@ button:disabled,
 }
 
 #menu .links li {
-	padding: 0;
+	padding: 0em;
 	color: #000000;
 
 }
 
 #menu .links li a {
-	border-radius: 5px;
+	border-radius: 15px;
 	border: 0;
 	display: block;
 	font-family: Raleway, Helvetica, sans-serif;
@@ -3662,9 +3675,11 @@ button:disabled,
 	font-weight: bold;
 	letter-spacing: 0.1em;
 	line-height: 1.85em;
-	padding: 0.7em 0;
+	padding: 0.5em 0;
 	text-transform: uppercase;
 	color: #2c3464;
+	margin: 3%;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 1)
 }
 
 #menu .links li a:hover {
@@ -3924,8 +3939,15 @@ body.is-preload #banner p {
 }
 
 #banner-home {
-	padding: 15em 0 16em 0;
+	align-content: center;
+	padding: 5em 0 11.5em 0;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
 	background: linear-gradient(to bottom right, transparent 75%, white 90%);
+	/* Para não interferir com cliques */
 
 }
 
@@ -4562,7 +4584,7 @@ body.is-preload #banner-arm p {
 .wrapper.spotlight .image {
 	border-radius: 5%;
 	margin: 0 3em 2em 0;
-	width: 30em;
+	width: 70%;
 	overflow: hidden;
 	-ms-flex: 1;
 	box-shadow: 0px 0px 15px rgba(0, 0, 0, 10);
@@ -4798,7 +4820,7 @@ body.is-preload #banner-arm p {
 	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin: 0 auto;
-	width: 75em;
+	width: 65em;
 }
 
 #footer .inner>* {
@@ -4833,7 +4855,7 @@ body.is-preload #banner-arm p {
 	font-size: 0.9em;
 	line-height: 1;
 	margin-left: 1em;
-	padding: 0;
+	padding: 0.5em;
 	padding-left: 1em;
 
 }
@@ -4844,6 +4866,7 @@ body.is-preload #banner-arm p {
 	padding-left: 0;
 
 }
+
 
 #footer .inner .copyright li a {
 	color: inherit;
