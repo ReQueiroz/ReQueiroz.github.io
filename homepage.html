@@ -36,8 +36,9 @@
 						onmouseover="changeBackgroundColor(true)" onmouseout="changeBackgroundColor(false)">Login: ADMIN
 						<i class="fas fa-cog"></i></a>
 
+					<!-- Dropdown de opções -->
 					<div id="dropdownContent">
-						<a href="index.html">Sair <i class="fas fa-times"></i></a>
+						<a href="#" onclick="showLoadingModal()" id="sairBtn">Sair <i class="fas fa-times"></i></a>
 						<!-- Outras opções de logout aqui -->
 					</div>
 				</span>
@@ -45,6 +46,14 @@
 			</nav>
 		</header>
 
+		<!-- Modal de barra de carregamento -->
+		<div id="loaderModal" class="modal">
+			<div class="modal-content">
+				<div class="loader"></div>
+				<h2 id="loadingText" style="font-size: larger; font-weight: bolder; color: white;">REDIRECIONANDO...
+				</h2>
+			</div>
+		</div>
 		<script>
 
 			function changeBackgroundColor(isHover) {
@@ -57,6 +66,7 @@
 					loginLink.style.color = "black";
 				}
 			}
+
 			function toggleDropdown(event) {
 				event.preventDefault();
 				var dropdown = document.getElementById("dropdownContent");
@@ -65,7 +75,21 @@
 				} else {
 					dropdown.style.display = "none";
 				}
+
+				if (event.target.textContent === "Sair") {
+					document.getElementById("logoutModal").style.display = "block";
+					// Simule um atraso para a barra de carregamento
+					setTimeout(function () {
+						// Aqui você pode redirecionar o usuário para a página de login ou executar outras ações de logout
+						// window.location.href = "pagina_de_login.html";
+						// Por enquanto, vamos apenas esconder o modal
+						document.getElementById("logoutModal").style.display = "none";
+						dropdown.style.display = "none"; // Esconder o menu após o logout
+					}, 2000); // Tempo simulado de 2 segundos
+				}
 			}
+
+
 		</script>
 
 		<style>
@@ -393,7 +417,7 @@
 							style="padding-left: 1em; color: white;"></a>
 						<a href="https://www.linkedin.com/company/rvimola/" class="icon brands fa-linkedin"
 							style="padding-left: 1em; color: white;"></a>
-						</li>
+
 
 						<li>Desenvolvido por: <a href="renatoqueiroz.html">Renato S. Queiroz</a></li>
 						<a href="https://www.linkedin.com/in/renato-queiroz/" class="icon brands fa-linkedin"
@@ -407,6 +431,8 @@
 			</section>
 
 	</div>
+
+
 
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
@@ -528,6 +554,26 @@
 				console.log("Fechar menu");
 			});
 		});
+
+		function showLoadingModal() {
+			// Exibe o modal de barra de carregamento
+			document.getElementById("loaderModal").style.display = "block";
+
+			// Armazena a posição atual da barra de rolagem
+			var scrollPosition = window.scrollY;
+
+			// Define um atraso para o redirecionamento (2 segundos neste exemplo)
+			setTimeout(function () {
+				// Redireciona para a página index
+				window.location.href = "index.html";
+
+				// Restaura a posição da barra de rolagem após o redirecionamento
+				window.scrollTo(0, scrollPosition);
+			}, 2000); // Ajuste este valor conforme necessário
+
+			// Evita o comportamento padrão do link (redirecionamento imediato)
+			event.preventDefault();
+		}
 	</script>
 
 
@@ -599,7 +645,58 @@
 			justify-content: space-around;
 			/* Ou outro valor de alinhamento, como space-between */
 		}
+
+		/* Estilos para o modal */
+		.modal {
+			display: none;
+			position: fixed;
+			z-index: 9999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.7);
+			backdrop-filter: blur(5px);
+			/* Adiciona o efeito de fundo borrado */
+		}
+
+		.modal-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: transparent;
+			padding: 20px;
+			width: 80%;
+			text-align: center;
+			border-radius: 10px;
+		}
+
+		.loader {
+			border: 16px solid #f3f3f3;
+			/* Light grey */
+			border-top: 16px solid #2c3464;
+			/* Blue */
+			border-radius: 50%;
+			width: 120px;
+			height: 120px;
+			animation: spin 1.5s linear infinite;
+			margin: auto;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
 	</style>
+
+
 
 </body>
 
