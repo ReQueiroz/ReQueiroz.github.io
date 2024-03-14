@@ -24,27 +24,100 @@
 		<!-- Header -->
 		<header id="header" class="alt">
 			<div style="float: left;">
-				<h1><a href="homepage.html" class="image"><img src="images/logo.png"></a>
+				<h1><a href="homepage.html" class="image"><img src="images/logo.png" alt="Logo"></a></h1>
 			</div>
 			<div style="margin: 0 auto;">
 				<h1><a href="homepage.html">INTRANET - GRU II</a></h1>
 			</div>
 			<nav>
-				<a href="#menu">Menu</a>
+				<span id="loginDropdown" style="position: relative;">
+					<a href="#" onclick="toggleDropdown(event)"
+						style="background-color: white; border-radius: 10px; color: black; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1)"
+						onmouseover="changeBackgroundColor(true)" onmouseout="changeBackgroundColor(false)">Login: ADMIN
+						<i class="fas fa-cog"></i></a>
+
+					<div id="dropdownContent">
+						<a href="index.html">Sair <i class="fas fa-times"></i></a>
+						<!-- Outras opções de logout aqui -->
+					</div>
+				</span>
+				<a href="#menu" style="box-shadow: 0px 0px 5px rgba(0, 0, 0, 1)">Menu | </a>
 			</nav>
 		</header>
+
+		<script>
+
+			function changeBackgroundColor(isHover) {
+				var loginLink = document.getElementById("loginDropdown").querySelector("a");
+				if (isHover) {
+					loginLink.style.backgroundColor = "#2c3464";
+					loginLink.style.color = "white";
+				} else {
+					loginLink.style.backgroundColor = "white";
+					loginLink.style.color = "black";
+				}
+			}
+			function toggleDropdown(event) {
+				event.preventDefault();
+				var dropdown = document.getElementById("dropdownContent");
+				if (dropdown.style.display === "none" || dropdown.style.display === "") {
+					dropdown.style.display = "block";
+				} else {
+					dropdown.style.display = "none";
+				}
+			}
+		</script>
+
+		<style>
+			#dropdownContent {
+				display: none;
+				position: absolute;
+				top: 110%;
+				left: 0;
+				width: 97%;
+				margin-top: 1em;
+				background-color: white;
+				border-radius: 10px;
+				color: black;
+				box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+				animation: fadeIn 0.3s ease-in-out;
+
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(-10px);
+				}
+
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			#dropdownContent a:hover {
+				background-color: rgb(155, 0, 0);
+				border-radius: 10px;
+				width: 100%;
+				/* ou qualquer outra cor de sua escolha */
+			}
+		</style>
+
 
 		<!-- Menu -->
 		<nav id="menu">
 			<div class="inner">
 				<h2>Menu</h2>
-				<ul class="links">
+				<h3 style="color: #2c3464; margin: 0; font-weight: 900;">login:admin</h3>
+
+				<ul class="links" style="margin: 0;">
 					<li><a href="homepage.html">INÍCIO</a></li>
 					<li><a href="armazem.html">ARMAZÉM</a></li>
 					<li><a href="transportes.html">TRANSPORTES</a></li>
 					<li id="colaboradores" onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 						<a href="colaboradores.html" class="special">COLABORADORES</a>
-						<ul class="submenu" style="margin: 0px; border: 1px; box-shadow: inset #2c3464;">
+						<ul class="submenu" style="margin: 0px; border: 1px;">
 							<a href="organogramas.html">Organogramas</a>
 							<a href="colab-listagem.html">Lista de Contatos</a>
 						</ul>
@@ -76,89 +149,14 @@
 			</div>
 		</nav>
 
-		<script>
-			document.addEventListener("DOMContentLoaded", function () {
-				var colaboradoresLi = document.getElementById("colaboradores");
-				var unidadesLi = document.getElementById("unidades");
-				var clientesLi = document.getElementById("clientes");
 
-				function showSubmenu(li) {
-					var submenu = li.querySelector(".submenu");
-					submenu.classList.add("active");
-				}
-
-				function hideSubmenu(li) {
-					var submenu = li.querySelector(".submenu");
-					submenu.classList.remove("active");
-				}
-
-				colaboradoresLi.addEventListener("mouseenter", function () {
-					showSubmenu(colaboradoresLi);
-				});
-				colaboradoresLi.addEventListener("mouseleave", function () {
-					hideSubmenu(colaboradoresLi);
-				});
-
-				unidadesLi.addEventListener("mouseenter", function () {
-					showSubmenu(unidadesLi);
-				});
-				unidadesLi.addEventListener("mouseleave", function () {
-					hideSubmenu(unidadesLi);
-				});
-
-				clientesLi.addEventListener("mouseenter", function () {
-					showSubmenu(clientesLi);
-				});
-				clientesLi.addEventListener("mouseleave", function () {
-					hideSubmenu(clientesLi);
-				});
-
-				// Adicionar eventos de clique aos submenus
-				var submenus = document.querySelectorAll(".submenu");
-				submenus.forEach(function (submenu) {
-					submenu.addEventListener("click", function (event) {
-						event.stopPropagation(); // Impede que o evento de clique no submenu propague para o menu principal
-					});
-				});
-
-				// Adicionar evento de clique ao botão de close
-				document.querySelector("#menu .close").addEventListener("click", function (event) {
-					event.preventDefault();
-					// Fechar o menu aqui
-					console.log("Fechar menu");
-				});
-			});
-		</script>
-
-		<style>
-			/* Adiciona estilos para os submenus */
-			.submenu {
-				opacity: 0;
-				max-height: 0;
-				overflow: hidden;
-				transition: max-height 0.6s ease, opacity 0.6s ease;
-			}
-
-			.submenu.active {
-				max-height: 2000px;
-				/* Ajuste conforme necessário */
-				opacity: 1;
-			}
-
-			/* Adiciona rolagem vertical ao menu */
-			#menu .inner {
-				overflow-y: auto;
-				max-height: 800vh;
-				/* Defina a altura máxima conforme necessário */
-			}
-		</style>
 
 		<!-- Banner -->
 		<section id="banner"
 			style="background-image: url('images/bg-inicio.png'); background-size: cover; background-position: center;">
 			<div class="inner">
-				<h2 style="color:#2c3464">INTRANET - GRU II</h2>
-				<p style="color:#2c3464">Gestão à Vista da Logística que leva saúde até você.</p>
+				<h2 style="color:#2c3464; margin: 0;">INTRANET - GRU II</h2>
+				<p style="color:#2c3464; margin: 0;">Gestão à Vista da Logística que leva saúde até você.</p>
 			</div>
 		</section>
 
@@ -167,200 +165,200 @@
 
 
 			<!-- One -->
-			<style>
-				.wrapper.spotlight.style1 {
-					display: flex;
-					justify-content: space-around;
-					/* Ou outro valor de alinhamento, como space-between */
-				}
-			</style>
+			<section id="one" class="wrapper spotlight style1"
+				style="padding: 2em 8em 0em 8em; position: relative; display: flex; flex-wrap: wrap;">
 
-			<section id="one" class="wrapper spotlight style1" style="padding: 2em 4em 2em 4em; position: relative;">
 				<div class="inner"
-					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
 					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 					<a href="armazem.html" target="_blank" class="image" style="margin: 2%;"><img
 							src="images/pic01.jpg"></a>
 					<div class="content" align="center" style="padding: 5%;">
 						<h3 class="major-inicio">ARMAZÉM</h3>
-						<a href="armazem.html" target="_blank" class="special">ACESSAR</a>
+						<a href="armazem.html" target="_blank" class="special" title="Acessar Armazém">ACESSAR</a>
 					</div>
 				</div>
 
 				<div class="inner"
-					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
 					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 					<a href="transportes.html" target="_blank" class="image" style="margin: 2%"><img
 							src="images/pic02.jpg"></a>
 					<div class="content" align="center" style="padding: 5%;">
-						<H3 class="major-inicio">TRANSPORTES</h3>
+						<H3 class="major-inicio">TRANSPORTES</H3>
 						<a href="transportes.html" target="_blank" class="special">ACESSAR</a>
 					</div>
 				</div>
-
 				<div class="inner"
-					style="margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
 					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
 					<a href="colaboradores.html" target="_blank" class="image" style="margin: 2%"><img
 							src="images/pic03.jpg"></a>
 					<div class="content" align="center" style="padding: 5%;">
-						<H3 class="major-inicio">COLABORADORES</h3>
+						<H3 class="major-inicio">COLABORADORES</H3>
 						<a href="colaboradores.html" target="_blank" class="special">ACESSAR</a>
 					</div>
 				</div>
-			</section>
 
-
-
-			<!-- Four -->
-			<section id="four" class="wrapper alt style1">
-				<div class="inner">
-
-					<h2 class="inicio-dep" align="center">NAVEGUE POR OUTROS DEPARTAMENTOS</h2>
-					<p class="inicio-dep" align="center">Gerencie os demais setores e departamentos da unidade por
-						meio
-						de Dashboards e KPIs decisivos para a tomada de decições.</p>
-					<section class="features" align="center">
-						<article style="width: 23.5%;">
-							<a href="https://tms.rvimola.com.br" target="_blank" class="image"><img
-									src="images/pic04.jpg" alt="" /></a>
-							<h3 class="major-inicio">EXPEDIÇÃO</h3>
-							<p>Visualize Manifestos, CT-Es, ARs, Minutas, Devoluções, Transferencias e
-								Remanejamentos no TMS.</p>
-							<a href="https://tms.rvimola.com.br" target="_blank" class="special">ACESSE O TMS</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="frota.html" target="_blank" class="image"><img src="images/frota.png" alt="" /></a>
-							<h3 class="major-inicio">FROTA</h3>
-							<p>Analise os veículos da unidade categorizados por frota ou agregado. Gerencie gastos,
-								manutenções e permissões.</p>
-							<a href="frota.html" target="_blank" class="special">ACESSAR</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="http://10.6.0.19/" target="_blank" class="image"><img src="images/pic06.jpg"
-									alt="" /></a>
-							<h3 class="major-inicio">SORTER</h3>
-							<p>Gerencie os pedidos, volumes, derrubadas e desempenho da equipe durante a operação do
-								equipamento.</p>
-							<a href="http://10.6.0.19/" target="_blank" class="special">ACESSE A BRINT</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="#" target="_blank" class="image"><img src="images/logimat.jpeg" alt="" /></a>
-							<h3 class="major-inicio">LOGIMAT</h3>
-							<p>Verifique os relatórios, bandejas, produtos e posições ocupadas e livres no
-								equipamento.
-							</p>
-							<a href="#" target="_blank" class="special">ACESSE o site</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="rh.html" target="_blank" class="image"><img src="images/rh.png" alt="" /></a>
-							<h3 class="major-inicio">RH</h3>
-							<p>Supervisione os treinamentos, integrações, contratações, promoções e afastamentos dos
-								colaboradores na unidade.</p>
-							<a href="rh.html" target="_blank" class="special">ACESSAR</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="https://portal.rvimola.com.br" target="_blank" class="image"><img
-									src="images/ti.PNG" alt="" /></a>
-							<h3 class="major-inicio">TI</h3>
-							<p>Abra e visualize chamados, solicite suporte e gerencie as solicitações de Help Desk,
-								Infra e Open
-								Data.</p>
-							<a href="https://portal.rvimola.com.br" target="_blank" class="special">ACESSE O
-								PORTAL</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="insumos.html" target="_blank" class="image"><img src="images/insumos2.png"
-									alt="" /></a>
-							<h3 class="major-inicio">INSUMOS</h3>
-							<p>Controle a compra e utilização de insumos pelas àreas da unidade. Analise por
-								Dashboards
-								e KPIs.</p>
-							<a href="insumos.html" target="_blank" class="special">ACESSE O DASH</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="sst.html" target="_blank" class="image"><img src="images/sst.png" alt="" /></a>
-							<h3 class="major-inicio">SST</h3>
-							<p>Inspecione a CIPA, Brigada de Incendios, DDSs, Checklist e EPIs utilizados peos
-								colaboradores na unidade.
-							</p>
-							<a href="sst.html" target="_blank" class="special">ACESSAR</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="cs.html" target="_blank" class="image"><img src="images/cs.png" alt="" /></a>
-							<h3 class="major-inicio">CUSTOMER SERVICE</h3>
-							<p>Veja os portais do cliente, chamados, solicitações de atendimento e faturamentos de
-								cada
-								cliente.
-							</p>
-							<a href="cs.html" target="_blank" class="special">ACESSAR</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="aereo.html" target="_blank" class="image"><img src="images/aereo.png" alt="" /></a>
-							<h3 class="major-inicio">AÉREO</h3>
-							<p>Cheque documentações, agendamentos, clientes, companhias aéreas, parceiros e cargas
-								transportadas.
-							</p>
-							<a href="aereo.html" target="_blank" class="special">ACESSAR</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="clientes.html" target="_blank" class="image"><img src="images/clientes.png"
-									alt="" /></a>
-							<h3 class="major-inicio">CLIENTES</h3>
-							<p>Consulte faturamentos, inventários agendados, auditorias previstas, bases no CLIF dos
-								clientes na unidade.
-							</p>
-							<a href="clientes.html" target="_blank" class="special">CONSULTAR</a>
-						</article>
-						<article style="width: 23.5%;">
-							<a href="https://rvimola.qualyteam.com.br/login/login.aspx" target="_blank"
-								class="image"><img src="images/qt.jpg" alt="" /></a>
-							<h3 class="major-inicio">QUALYTEAM</h3>
-							<p>Faça gestão dos POPs e documentações relacionadas, além de controle completo de OCs e
-								análise de RNCs.
-							</p>
-							<a href="https://rvimola.qualyteam.com.br/login/login.aspx" target="_blank"
-								class="special">ACESSE O QT</a>
-						</article>
-
-					</section>
-					<ul class="actions">
-						<li><a href="departamentos.html" class="button-dep">VER TODOS OS DEPARTAMENTOS</a></li>
-					</ul>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="https://tms.rvimola.com.br" target="_blank" class="image" style="margin: 2%;"><img
+							src="images/pic04.jpg"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<h3 class="major-inicio">EXPEDIÇÃO</h3>
+						<a href="https://tms.rvimola.com.br" target="_blank" class="special">ACESSAR</a>
+					</div>
 				</div>
+
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="frota.html" target="_blank" class="image" style="margin: 2%"><img
+							src="images/frota.png"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">FROTA</H3>
+						<a href="frota.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="http://10.6.0.19/" target="_blank" class="image" style="margin: 2%"><img
+							src="images/pic06.jpg"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">SORTER</H3>
+						<a href="http://10.6.0.19/" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="#" target="_blank" class="image" style="margin: 2%"><img src="images/logimat.jpeg"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">LOGIMAT</H3>
+						<a href="#" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="rh.html" target="_blank" class="image" style="margin: 2%"><img src="images/rh.png"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">R.H.</H3>
+						<a href="rh.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="https://portal.rvimola.com.br" target="_blank" class="image" style="margin: 2%"><img
+							src="images/ti.PNG"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">T.I.</H3>
+						<a href="https://portal.rvimola.com.br" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="insumos.html" target="_blank" class="image" style="margin: 2%"><img
+							src="images/insumos2.png"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">INSUMOS</H3>
+						<a href="insumos.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="sst.html" target="_blank" class="image" style="margin: 2%"><img src="images/sst.png"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">S.S.T.</H3>
+						<a href="sst.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="cs.html" target="_blank" class="image" style="margin: 2%"><img src="images/cs.png"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">C.S.</H3>
+						<a href="cs.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="aereo.html" target="_blank" class="image" style="margin: 2%"><img
+							src="images/aereo.png"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">AÉREO</H3>
+						<a href="aereo.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="clientes.html" target="_blank" class="image" style="margin: 2%"><img
+							src="images/clientes.png"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">CLIENTES</H3>
+						<a href="clientes.html" target="_blank" class="special">ACESSAR</a>
+					</div>
+				</div>
+				<div class="inner"
+					style="flex-basis: calc(33.33% - 2%); max-width: calc(33.33% - 2%); margin: 1%; padding: 0; border-radius: 15px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1); background-color: white;"
+					onmouseover="expandInner(this)" onmouseout="collapseInner(this)">
+					<a href="https://rvimola.qualyteam.com.br/login/login.aspx" target="_blank" class="image"
+						style="margin: 2%"><img src="images/qt.jpg"></a>
+					<div class="content" align="center" style="padding: 5%;">
+						<H3 class="major-inicio">QUALYTEAM</H3>
+						<a href="https://rvimola.qualyteam.com.br/login/login.aspx" target="_blank"
+							class="special">ACESSAR</a>
+					</div>
+				</div>
+				<ul class="actions">
+					<a href="departamentos.html" class="special" style="margin: 0;">VER TODOS OS DEPARTAMENTOS</a>
+				</ul>
+
+
 			</section>
 
-
-			<section id="four" class="wrapper alt style1" style="background-color: #6c7494;">
-				<div class="inner">
-					<h2 class="inicio-dep" align="center">ACESSE OUTRAS UNIDADES</h2>
+			<section id="four" class="carousel-container" style="background-color: #6c7494; background-image: url('images/background-logo-escuro.png');
+    background-repeat: no-repeat;
+    background-size: cover;">
+				<div class="inner" style="max-height: 735px; margin: 0 auto;">
+					<h2 class="inicio-dep" align="center">ACESSE OUTRAS
+						UNIDADES</h2>
 					<section class="features" align="center">
-						<article style="width: 23.5%;">
-							<a href="#" class="image"><img src="images/gru1.jpg" alt="" /></a>
+						<article>
+							<a href="index-gru1.html" class="image"><img src="images/gru1.jpg" alt="" /></a>
 							<h3 class="major-inicio">GRU I (MATRIZ)</h3>
-							<a href="#" class="special">INTRANET</a>
+							<a href="index-gru1.html" class="special">INTRANET</a>
 						</article>
-						<article style="width: 23.5%;">
-							<a href="#" class="image"><img src="images/gru3.png" alt="" /></a>
+						<article>
+							<a href="index-gru3.html" class="image"><img src="images/gru3.png" alt="" /></a>
 							<h3 class="major-inicio">GRU III</h3>
-							<a href="#" class="special">INTRANET</a>
+							<a href="index-gru3.html" class="special">INTRANET</a>
 						</article>
-						<article style="width: 23.5%;">
-							<a href="#" class="image"><img src="images/rio.png" alt="" /></a>
+						<article>
+							<a href="index-rjo.html" class="image"><img src="images/rio.png" alt="" /></a>
 							<h3 class="major-inicio">RIO DE JANEIRO</h3>
-							<a href="#" class="special">INTRANET</a>
+							<a href="index-rjo.html" class="special">INTRANET</a>
 						</article>
-						<article style="width: 23.5%;">
-							<a href="#" class="image"><img src="images/rao.png" alt="" /></a>
+						<article>
+							<a href="index-rao.html" class="image"><img src="images/rao.png" alt="" /></a>
 							<h3 class="major-inicio">RIBEIRÃO PRETO</h3>
-							<a href="#" class="special">INTRANET</a>
+							<a href="index-rao.html" class="special">INTRANET</a>
 						</article>
-						<article style="width: 23.5%;">
-							<a href="#" class="image"><img src="images/jbt.jpeg" alt="" /></a>
+						<article>
+							<a href="index-jbt.html" class="image"><img src="images/jbt.jpeg" alt="" /></a>
 							<h3 class="major-inicio">J. DOS GUARARAPES</h3>
-							<a href="#" class="special">INTRANET</a>
+							<a href="index-jbt.html" class="special">INTRANET</a>
 						</article>
-
 					</section>
 					<ul class="actions">
 						<li><a href="unidades.html" class="button-dep">VER MAIS INFORMAÇÕES</a></li>
@@ -373,7 +371,6 @@
 			<!-- Footer -->
 			<section id="footer" align="center">
 				<div class="inner">
-
 
 					<ul class="copyright" style="margin-top: 0em;">
 
@@ -401,9 +398,9 @@
 						<li>Desenvolvido por: <a href="renatoqueiroz.html">Renato S. Queiroz</a></li>
 						<a href="https://www.linkedin.com/in/renato-queiroz/" class="icon brands fa-linkedin"
 							style="color: white;"></a>
-						</a>
+
 						</li>
-						</li>
+
 					</ul>
 				</div>
 
@@ -412,7 +409,7 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src=" assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
@@ -422,35 +419,37 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 	<script>
 		$(document).ready(function () {
-			$('.features').slick({
-				dots: true,
-				infinite: true,
-				speed: 1500,
-				autoplay: true,
-				autoplaySpeed: 0,
-				slidesToShow: 3.66, // Ajustado para exibir um número inteiro de slides
-				slidesToScroll: 1,
-				prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-				nextArrow: '<button type="button" class="slick-next">Next</button>',
-				responsive: [
-					{
-						breakpoint: 1024,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 3
+			// Inicializa o slick apenas se a seção estiver visível
+			if ($('#four').is(':visible')) {
+				$('.features').slick({
+					dots: true,
+					infinite: true,
+					speed: 1500,
+					autoplay: true,
+					autoplaySpeed: 0,
+					slidesToShow: 4.66, // Ajustado para exibir um número inteiro de slides
+					slidesToScroll: 1,
+					prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+					nextArrow: '<button type="button" class="slick-next">Next</button>',
+					responsive: [
+						{
+							breakpoint: 1024,
+							settings: {
+								slidesToShow: 3,
+								slidesToScroll: 3
+							}
+						},
+						{
+							breakpoint: 600,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1
+							}
 						}
-					},
-					{
-						breakpoint: 600,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
-						}
-					}
-				]
-			});
+					]
+				});
+			}
 		});
-
 
 
 		function expandInner(element) {
@@ -475,17 +474,63 @@
 			}
 		}
 
-		function getSiblings(element) {
-			var siblings = [];
-			var sibling = element.parentNode.firstChild;
-			for (; sibling; sibling = sibling.nextSibling) {
-				if (sibling.nodeType === 1 && sibling !== element) {
-					siblings.push(sibling);
-				}
+		document.getElementById('expandAllBtn').addEventListener('click', expandAll);
+		document.getElementById('collapseAllBtn').addEventListener('click', collapseAll);
+
+		document.addEventListener("DOMContentLoaded", function () {
+			var colaboradoresLi = document.getElementById("colaboradores");
+			var unidadesLi = document.getElementById("unidades");
+			var clientesLi = document.getElementById("clientes");
+
+			function showSubmenu(li) {
+				var submenu = li.querySelector(".submenu");
+				submenu.classList.add("active");
 			}
-			return siblings;
-		}
+
+			function hideSubmenu(li) {
+				var submenu = li.querySelector(".submenu");
+				submenu.classList.remove("active");
+			}
+
+			colaboradoresLi.addEventListener("mouseenter", function () {
+				showSubmenu(colaboradoresLi);
+			});
+			colaboradoresLi.addEventListener("mouseleave", function () {
+				hideSubmenu(colaboradoresLi);
+			});
+
+			unidadesLi.addEventListener("mouseenter", function () {
+				showSubmenu(unidadesLi);
+			});
+			unidadesLi.addEventListener("mouseleave", function () {
+				hideSubmenu(unidadesLi);
+			});
+
+			clientesLi.addEventListener("mouseenter", function () {
+				showSubmenu(clientesLi);
+			});
+			clientesLi.addEventListener("mouseleave", function () {
+				hideSubmenu(clientesLi);
+			});
+
+			// Adicionar eventos de clique aos submenus
+			var submenus = document.querySelectorAll(".submenu");
+			submenus.forEach(function (submenu) {
+				submenu.addEventListener("click", function (event) {
+					event.stopPropagation(); // Impede que o evento de clique no submenu propague para o menu principal
+				});
+			});
+
+			// Adicionar evento de clique ao botão de close
+			document.querySelector("#menu .close").addEventListener("click", function (event) {
+				event.preventDefault();
+				// Fechar o menu aqui
+				console.log("Fechar menu");
+			});
+		});
 	</script>
+
+
 
 	<a href="#top">
 		<svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 25 20" data-name="Layer 1">
@@ -501,10 +546,45 @@
 			font-size: 35px;
 			/* Define o tamanho do ícone */
 		}
-	</style>
 
 
-	<style>
+		#four .inner {
+			margin: 0 auto;
+			text-align: center;
+			/* Alinha o texto ao centro */
+			transform: scale(0.8);
+		}
+
+
+		.actions {
+			margin-top: 20px;
+			/* Espaçamento superior */
+			text-align: center;
+			/* Alinha ao centro */
+		}
+
+
+		/* Adiciona estilos para os submenus */
+		.submenu {
+			opacity: 0;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.6s ease, opacity 0.6s ease;
+		}
+
+		.submenu.active {
+			max-height: 2000px;
+			/* Ajuste conforme necessário */
+			opacity: 1;
+		}
+
+		/* Adiciona rolagem vertical ao menu */
+		#menu .inner {
+			overflow-y: auto;
+			max-height: 800vh;
+			/* Defina a altura máxima conforme necessário */
+		}
+
 		.image img {
 			transition: transform 0.3s ease-out;
 			/* ou ease-in ou linear */
@@ -512,6 +592,12 @@
 
 		.image img:hover {
 			transform: scale(0.98);
+		}
+
+		.wrapper.spotlight.style1 {
+			display: flex;
+			justify-content: space-around;
+			/* Ou outro valor de alinhamento, como space-between */
 		}
 	</style>
 
