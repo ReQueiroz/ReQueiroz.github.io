@@ -33,15 +33,180 @@
 		<!-- Header -->
 		<header id="header" class="alt">
 			<div style="float: left;">
-				<h1><a href="homepage.html" class="image"><img src="images/logo.png"></a>
+				<h1><a href="homepage.html" class="image"><img src="images/logo.png" alt="Logo"></a></h1>
 			</div>
 			<div style="margin: 0 auto;">
-				<h1><a href="homepage.html">TRANSPORTES - GRU II</a></h1>
+				<h1 style="color: #2c3464;">TRANSPORTES - GRU II</h1>
 			</div>
 			<nav>
-				<a href="#menu">Menu</a>
+				<span id="loginDropdown" style="position: relative;">
+					<a href="#" onclick="toggleDropdown(event)"
+						style="background-color: white; border-radius: 10px; color: black; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1)"
+						onmouseover="changeBackgroundColor(true)" onmouseout="changeBackgroundColor(false)">Login: ADMIN
+						<i class="fas fa-cog"></i></a>
+
+					<!-- Dropdown de opções -->
+					<div id="dropdownContent">
+						<a href="#" style="display: flex; align-items: center;">
+							<span style="margin-right: auto;">Perfil</span>
+							<i class="fas fa-user" style="margin-left: 5px;"></i>
+						</a>
+						<a href="#" onclick="showLoadingModal()" id="sairBtn"
+							style="display: flex; align-items: center;">
+							<span style="margin-right: auto;">Sair</span>
+							<i class="fas fa-times" style="margin-left: 5px;"></i>
+						</a>
+						<!-- Outras opções de logout aqui -->
+					</div>
+				</span>
+				<a href="#menu" style="box-shadow: 0px 0px 5px rgba(0, 0, 0, 1)">Menu | </a>
 			</nav>
 		</header>
+		<script>
+			function changeBackgroundColor(isHover) {
+				var loginLink = document.getElementById("loginDropdown").querySelector("a");
+				if (isHover) {
+					loginLink.style.backgroundColor = "#2c3464";
+					loginLink.style.color = "white";
+				} else {
+					loginLink.style.backgroundColor = "white";
+					loginLink.style.color = "black";
+				}
+			}
+
+			function toggleDropdown(event) {
+				event.preventDefault();
+				var dropdown = document.getElementById("dropdownContent");
+				if (dropdown.style.display === "none" || dropdown.style.display === "") {
+					dropdown.style.display = "block";
+				} else {
+					dropdown.style.display = "none";
+				}
+
+				if (event.target.textContent === "Sair") {
+					document.getElementById("logoutModal").style.display = "block";
+					// Simule um atraso para a barra de carregamento
+					setTimeout(function () {
+						// Aqui você pode redirecionar o usuário para a página de login ou executar outras ações de logout
+						// window.location.href = "pagina_de_login.html";
+						// Por enquanto, vamos apenas esconder o modal
+						document.getElementById("logoutModal").style.display = "none";
+						dropdown.style.display = "none"; // Esconder o menu após o logout
+					}, 2000); // Tempo simulado de 2 segundos
+				}
+			}
+
+			function showLoadingModal() {
+				// Exibe o modal de barra de carregamento
+				document.getElementById("loaderModal").style.display = "block";
+
+				// Armazena a posição atual da barra de rolagem
+				var scrollPosition = window.scrollY;
+
+				// Define um atraso para o redirecionamento (2 segundos neste exemplo)
+				setTimeout(function () {
+					// Redireciona para a página index
+					window.location.href = "index.html";
+
+					// Restaura a posição da barra de rolagem após o redirecionamento
+					window.scrollTo(0, scrollPosition);
+				}, 2000); // Ajuste este valor conforme necessário
+
+				// Evita o comportamento padrão do link (redirecionamento imediato)
+				event.preventDefault();
+			}
+		</script>
+		<style>
+			#dropdownContent {
+				display: none;
+				position: absolute;
+				top: 110%;
+				left: 0;
+				width: 97%;
+				margin-top: 1em;
+				background-color: white;
+				border-radius: 10px;
+				color: black;
+				box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+				animation: fadeIn 0.3s ease-in-out;
+
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(-10px);
+				}
+
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			#dropdownContent a:hover {
+				background-color: #2c3464;
+				border-radius: 10px;
+				width: 100%;
+				/* ou qualquer outra cor de sua escolha */
+			}
+
+			/* Estilos para o modal */
+			.modal {
+				display: none;
+				position: fixed;
+				z-index: 9999;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.7);
+				backdrop-filter: blur(5px);
+				/* Adiciona o efeito de fundo borrado */
+			}
+
+			.modal-content {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background-color: transparent;
+				padding: 20px;
+				width: 80%;
+				text-align: center;
+				border-radius: 10px;
+			}
+
+			.loader {
+				border: 16px solid #f3f3f3;
+				/* Light grey */
+				border-top: 16px solid #2c3464;
+				/* Blue */
+				border-radius: 50%;
+				width: 120px;
+				height: 120px;
+				animation: spin 1.5s linear infinite;
+				margin: auto;
+			}
+
+			@keyframes spin {
+				0% {
+					transform: rotate(0deg);
+				}
+
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+		<div id="loaderModal" class="modal">
+			<div class="modal-content">
+				<div class="loader"></div>
+				<h2 id="loadingText" style="font-size: larger; font-weight: bolder; color: white;">REDIRECIONANDO...
+				</h2>
+			</div>
+		</div>
 
 		<!-- Menu -->
 		<nav id="menu">
