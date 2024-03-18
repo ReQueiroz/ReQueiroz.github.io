@@ -30,9 +30,16 @@
 				<h1 style="color: #2c3464; font-size: 900;">INTRANET - GRU II</h1>
 			</div>
 			<nav style="display: flex; align-items: center;">
-				<div class="search-container">
-					<input type="text" placeholder="Pesquisar">
-					<i class="fas fa-search"></i>
+				<div class="search-container" onmouseout="delayCollapseSearch(event)">
+					<input type="text" id="searchInput" class="search-input" placeholder="Pesquisar por tema"
+						style="color: #2c3464;" onfocus="clearPlaceholder()" onblur="restorePlaceholder()"
+						oninput="searchSector()">
+					<i id="searchIcon" class="fas fa-search" onmouseover="expandSearch()"
+						onmouseout="cancelCollapseDelay()"></i>
+				</div>
+				<div id="sectorContainer"
+					style="display: none; position: absolute; top: 100%; left: 0; background-color: white; border-radius: 10px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);">
+					<div id="sectorInfo"></div>
 				</div>
 				<span id="loginDropdown" style="position: relative;">
 					<a href="#" onclick="toggleDropdown(event)"
@@ -68,6 +75,34 @@
 		</div>
 		<script>
 
+			function searchSector() {
+				var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+				var sectors = document.getElementsByClassName('major-inicio');
+
+				var matches = [];
+
+				for (var i = 0; i < sectors.length; i++) {
+					var sector = sectors[i].innerText.toLowerCase();
+					if (sector.includes(searchTerm)) {
+						matches.push(sectors[i]);
+					}
+				}
+
+				var sectorContainer = document.getElementById('sectorContainer');
+				var sectorInfo = document.getElementById('sectorInfo');
+
+				if (matches.length > 0) {
+					var dropdownContent = '<ul>';
+					for (var j = 0; j < matches.length; j++) {
+						dropdownContent += '<li><a href="#' + matches[j].innerText.replace(/\s+/g, '-') + '">' + matches[j].innerText + '</a></li>';
+					}
+					dropdownContent += '</ul>';
+					sectorInfo.innerHTML = dropdownContent;
+					sectorContainer.style.display = 'block';
+				} else {
+					sectorContainer.style.display = 'none';
+				}
+			}
 			function changeBackgroundColor(isHover) {
 				var loginLink = document.getElementById("loginDropdown").querySelector("a");
 				if (isHover) {
@@ -100,6 +135,173 @@
 					}, 2000); // Tempo simulado de 2 segundos
 				}
 			}
+
+			var isExpanded = false;
+			var collapseTimeout;
+
+			function expandSearch() {
+				var input = document.getElementById('searchInput');
+				input.style.width = 'calc(100% - 30px)'; // Largura expandida
+				input.value = 'Pesquisar por tema'; // Define o valor do campo de entrada
+				isExpanded = true;
+			}
+
+			function collapseSearch() {
+				var input = document.getElementById('searchInput');
+				if (input.value === '' || input.value === 'Pesquisar por tema') {
+					input.style.width = '0'; // Redefine a largura para zero para recolher completamente
+					input.value = ''; // Limpa o valor do campo de entrada
+					isExpanded = false;
+					clearSectorInfo(); // Limpa o nome do setor abaixo do input
+				}
+			}
+
+			function delayCollapseSearch(event) {
+				if (!event.relatedTarget || !event.currentTarget.contains(event.relatedTarget)) {
+					collapseTimeout = setTimeout(collapseSearch, 800); // Atraso de 2 segundos (2000 milissegundos) antes de recolher o elemento
+				}
+			}
+
+			function cancelCollapseDelay() {
+				clearTimeout(collapseTimeout);
+			}
+
+			function clearPlaceholder() {
+				var input = document.getElementById('searchInput');
+				if (input.value == 'Pesquisar por tema') {
+					input.value = '';
+				}
+			}
+
+			function restorePlaceholder() {
+				var input = document.getElementById('searchInput');
+				if (input.value == '') {
+					input.value = 'Pesquisar por tema';
+				}
+			}
+
+			// Esta função será chamada quando o valor do input mudar
+			function checkInput() {
+				var inputValue = document.getElementById('searchInput').value.toLowerCase(); // Obtém o valor do input e converte para minúsculas
+
+				// Seleciona todos os elementos h3 com a classe "major-inicio"
+				var h3Elements = document.querySelectorAll('h3.major-inicio');
+
+				// Itera sobre os elementos h3
+				for (var i = 0; i < h3Elements.length; i++) {
+					var h3Text = h3Elements[i].textContent.toLowerCase(); // Obtém o texto dentro do h3 e converte para minúsculas
+
+					// Verifica se o valor do input está contido no texto do h3
+					if (h3Text.includes(inputValue)) {
+						// Se encontrar correspondência, mostra o nome do setor abaixo do input
+						var sectorName = h3Elements[i].textContent;
+						var sectorHref = h3Elements[i].parentElement.querySelector('a').getAttribute('href');
+						showSectorInfo(sectorName, sectorHref);
+						return; // Termina a execução, pois já encontramos uma correspondência
+					}
+				}
+
+				// Se não encontrar correspondência, limpa o nome do setor abaixo do input
+				clearSectorInfo();
+			}
+
+			// Esta função mostra o nome do setor abaixo do input
+			function showSectorInfo(sectorName, sectorHref) {
+				var sectorInfoContainer = document.getElementById('sectorInfo');
+
+				// Encontrar todos os elementos com a classe "major-inicio"
+				var majorInicioElements = document.querySelectorAll('.major-inicio');
+
+				// Limpar o conteúdo anterior
+				sectorInfoContainer.innerHTML = '';
+
+				// Iterar sobre os elementos e encontrar os que correspondem ao setor
+				for (var i = 0; i < majorInicioElements.length; i++) {
+					if (majorInicioElements[i].textContent === sectorName) {
+						// Encontrou o elemento correspondente, agora extrair a URL da imagem
+						var imageUrl = majorInicioElements[i].parentNode.querySelector('.image img').src;
+
+						// Criar elementos para exibir a imagem e o texto do setor
+						var sectorLink = document.createElement('a');
+						sectorLink.href = sectorHref;
+
+						var imageElement = document.createElement('img');
+						imageElement.src = imageUrl;
+						imageElement.alt = sectorName;
+
+						var h3Element = document.createElement('h3');
+						h3Element.textContent = sectorName;
+
+						// Adicionar elementos ao container sectorInfo
+						sectorLink.appendChild(imageElement);
+						sectorLink.appendChild(h3Element);
+						sectorInfoContainer.appendChild(sectorLink);
+
+						// Exibir o container
+						sectorInfoContainer.style.display = 'block';
+
+						return; // Termina a execução após encontrar o elemento correspondente
+					}
+				}
+
+				// Se não encontrar correspondência, limpa o nome do setor abaixo do input
+				clearSectorInfo();
+			}
+
+
+
+
+
+
+
+			// Esta função limpa o nome do setor abaixo do input
+			function clearSectorInfo() {
+				var sectorInfoContainer = document.getElementById('sectorInfo');
+				sectorInfoContainer.innerHTML = ''; // Limpa o conteúdo do container
+				sectorInfoContainer.style.display = 'none'; // Oculta o container
+			}
+
+			window.onload = function () {
+				var input = document.getElementById('searchInput');
+				var sectorInfoContainer = document.getElementById('sectorInfo');
+
+				// Define a largura inicial do input como zero
+				input.style.width = '0';
+
+				input.addEventListener('input', function () {
+					var inputValue = input.value.toLowerCase();
+					var h3Elements = document.querySelectorAll('h3.major-inicio');
+
+					var matchingSectors = [];
+
+					for (var i = 0; i < h3Elements.length; i++) {
+						var h3Text = h3Elements[i].textContent.toLowerCase();
+						if (h3Text.includes(inputValue)) {
+							matchingSectors.push(h3Elements[i].textContent); // Adiciona apenas o texto do h3
+						}
+					}
+
+					// Limpa o container antes de adicionar novos resultados
+					sectorInfoContainer.innerHTML = '';
+
+					// Adiciona os resultados ao container
+					if (matchingSectors.length > 0) {
+						for (var j = 0; j < matchingSectors.length; j++) {
+							var a = document.createElement('a');
+							a.textContent = matchingSectors[j];
+							a.href = h3Elements[j].parentElement.querySelector('a').getAttribute('href');
+
+							var p = document.createElement('p'); // Cria um novo parágrafo para cada link
+							p.style.marginBottom = '0'; // Define a margem inferior como zero para remover a distância entre cada h3
+							p.appendChild(a); // Adiciona o link ao parágrafo
+							sectorInfoContainer.appendChild(p); // Adiciona o parágrafo ao contêiner
+						}
+						sectorInfoContainer.style.display = 'block'; // Exibe o container
+					} else {
+						sectorInfoContainer.style.display = 'none'; // Oculta o container se não houver correspondência
+					}
+				});
+			};
 
 
 		</script>
@@ -137,6 +339,76 @@
 				border-radius: 10px;
 				width: 100%;
 				/* ou qualquer outra cor de sua escolha */
+			}
+
+			.search-input {
+				width: 0;
+				/* Largura inicialmente zero para estar completamente recolhido */
+				transition: width 0.3s ease;
+				/* Adicionando transição para suavizar a animação */
+				overflow: hidden;
+				/* Esconder qualquer conteúdo que possa estar fora do campo de entrada */
+				float: right;
+				/* Colocar o campo de entrada à direita */
+			}
+
+			.expanded {
+				width: calc(100% - 30px);
+				/* Largura expandida */
+			}
+
+			#searchIcon {
+				cursor: pointer;
+				/* Altera o cursor para ponteiro */
+			}
+
+			#sectorInfo {
+				position: relative;
+				/* Para que o h3 possa ser posicionado em relação a este contêiner */
+				display: inline-block;
+				/* Para que ele não ocupe toda a largura */
+			}
+
+			#sectorInfo h3 {
+				display: none;
+				/* Comece escondido */
+				position: absolute;
+				/* Posicionado absolutamente em relação ao contêiner pai */
+				width: calc(100% - 30px);
+				/* Ocupa toda a largura do contêiner, respeitando o ícone de pesquisa */
+				background-color: white;
+				/* Cor de fundo branca */
+				border-radius: 10px;
+				/* Cantos arredondados */
+				box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+				/* Sombra */
+				color: black;
+				/* Cor do texto */
+				padding: 10px;
+				/* Espaçamento interno */
+				top: calc(100% + 5px);
+				/* Alinhado abaixo do contêiner pai com um pequeno espaço */
+				left: 0;
+				/* Alinhado à esquerda do contêiner pai */
+				z-index: 1;
+				/* Colocado acima de outros conteúdos */
+				margin-top: 0;
+				/* Adicionando margem superior zero */
+			}
+
+			#sectorInfo h3:hover {
+				background-color: #2c3464;
+				/* Altera a cor de fundo ao passar o mouse */
+			}
+
+			#sectorInfo:hover h3 {
+				display: block;
+			}
+
+			#sectorInfo:hover {
+				background-color: #2c3464;
+				/* Altera o background quando o mouse passa sobre o contêiner pai */
+				border-radius: 10px;
 			}
 		</style>
 
@@ -651,8 +923,6 @@
 			event.preventDefault();
 		}
 
-
-
 	</script>
 
 
@@ -665,6 +935,10 @@
 	</a>
 
 	<style>
+		.hidden {
+			display: none;
+		}
+
 		/* Ajusta o tamanho do ícone dentro dos botões slick-prev e slick-next */
 		.slick-prev:before,
 		.slick-next:before {
